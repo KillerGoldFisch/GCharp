@@ -1,0 +1,24 @@
+Existierende:
+
+git clone "https://github.com/KillerGoldFisch/PySinumerik.git"
+cd PySinumerik
+git add "Neues Textdokument.txt"
+git add -A
+git commit -m "2nd commit"
+git push origin master
+
+
+
+Neu anlegen:
+
+git init
+git config --global user.name "KillerGoldFisch"
+git config --global user.email kevingliewe@googlemail.com
+git commit -m "first commit"
+git push -u origin master
+
+
+
+update:
+
+git pull
