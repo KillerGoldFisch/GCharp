@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
@@ -56,7 +57,17 @@
     <Compile Include="Extensions\Type\TypeExtensions.cs" />
     <Compile Include="Networking\Socket\GSocket.cs" />
     <Compile Include="Networking\Socket\GSocketListener.cs" />
+    <Compile Include="ObjectProxy\DataErrorInfoProxy.cs" />
+    <Compile Include="ObjectProxy\DynamicProxy.cs" />
+    <Compile Include="ObjectProxy\EditableProxy.cs" />
+    <Compile Include="ObjectProxy\ValidatingProxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripting\CSScrip\AssemblyExecutor.cs" />
+    <Compile Include="Scripting\CSScrip\AssemblyResolver.cs" />
+    <Compile Include="Scripting\CSScrip\csscript.cs" />
+    <Compile Include="Scripting\CSScrip\CSScriptLib.cs" />
+    <Compile Include="Scripting\CSScrip\fileparser.cs" />
+    <Compile Include="Scripting\CSScrip\GACHelper.cs" />
     <Compile Include="StringHandling\Templating\TemplateParser.cs" />
     <Compile Include="Sys\Windows\Shell\ContextMenueEntrys.cs" />
     <Compile Include="Threading\Async.cs" />
