@@ -6,7 +6,7 @@ using System.IO;
 using GSharp.Extensions.Array;
 using GSharp.Extensions.Object;
 
-namespace GSharp.DB {
+namespace GSharp.Data{
     public class DB {
         #region Static
 
@@ -16,7 +16,6 @@ namespace GSharp.DB {
             get {
                 if (_instance == null) {
                     _instance = new DB(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\BackupProjectDB.bin");
-                    //_instance.initDB(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\BackupProjectDB.bin");
                 }
                 return _instance;
             }
