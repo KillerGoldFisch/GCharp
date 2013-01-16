@@ -45,6 +45,36 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\DB.cs" />
+    <Compile Include="Data\DbfDotNet\core\ClusteredFile.cs" />
+    <Compile Include="Data\DbfDotNet\core\ColumnDefinition.cs" />
+    <Compile Include="Data\DbfDotNet\core\DbfColumnHeader.cs" />
+    <Compile Include="Data\DbfDotNet\core\DbfFile.cs" />
+    <Compile Include="Data\DbfDotNet\core\DbfHeader.cs" />
+    <Compile Include="Data\DbfDotNet\core\DbfUtils.cs" />
+    <Compile Include="Data\DbfDotNet\core\IndexColumn.cs" />
+    <Compile Include="Data\DbfDotNet\core\MemoFile.cs" />
+    <Compile Include="Data\DbfDotNet\core\NdxEntry.cs" />
+    <Compile Include="Data\DbfDotNet\core\NdxFile.cs" />
+    <Compile Include="Data\DbfDotNet\core\NdxHeader.cs" />
+    <Compile Include="Data\DbfDotNet\core\NdxPage.cs" />
+    <Compile Include="Data\DbfDotNet\core\QuickSerializer.cs" />
+    <Compile Include="Data\DbfDotNet\core\RecordHolder.cs" />
+    <Compile Include="Data\DbfDotNet\core\SortFields.cs" />
+    <Compile Include="Data\DbfDotNet\core\Utils.cs" />
+    <Compile Include="Data\DbfDotNet\core\[Enums].cs" />
+    <Compile Include="Data\DbfDotNet\core\[Interfaces].cs" />
+    <Compile Include="Data\DbfDotNet\DbfField.cs" />
+    <Compile Include="Data\DbfDotNet\DbfIndex.cs" />
+    <Compile Include="Data\DbfDotNet\DbfRecord.cs" />
+    <Compile Include="Data\DbfDotNet\DbfTable.cs" />
+    <Compile Include="Data\DbfDotNet\Linq\DbfQuery.cs" />
+    <Compile Include="Data\DbfDotNet\Linq\DbfTable.cs" />
+    <Compile Include="Data\DbfDotNet\Record.cs" />
+    <Compile Include="Data\DbfDotNet\SortOrder.cs" />
+    <Compile Include="Data\DbfDotNet\[Atributes].cs" />
+    <Compile Include="Data\DbfDotNet\[Enums].cs" />
+    <Compile Include="Data\DbfDotNet\[Exceptions].cs" />
+    <Compile Include="Data\DbfDotNet\[Interfaces].cs" />
     <Compile Include="Data\IniFile.cs" />
     <Compile Include="Extensions\Array\ArrayExtesions.cs" />
     <Compile Include="Extensions\Bitmap\BitmapExtensions.cs" />
@@ -72,6 +102,21 @@
     <Compile Include="Sys\Windows\Shell\ContextMenueEntrys.cs" />
     <Compile Include="Threading\Async.cs" />
     <Compile Include="Threading\GThread.cs" />
+    <Compile Include="UI\Controls\SplitButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\SplitButton.designer.cs">
+      <DependentUpon>SplitButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XConsole\ConsoleBrowserObjects\ConsoleForm.cs" />
+    <Compile Include="XConsole\ConsoleBrowserObjects\Label.cs" />
+    <Compile Include="XConsole\ConsoleBrowserObjects\Labels.cs" />
+    <Compile Include="XConsole\ConsoleBrowserObjects\Line.cs" />
+    <Compile Include="XConsole\ConsoleBrowserObjects\Lines.cs" />
+    <Compile Include="XConsole\ConsoleBrowserObjects\Point.cs" />
+    <Compile Include="XConsole\ConsoleBrowserObjects\StdConsoleObject.cs" />
+    <Compile Include="XConsole\ConsoleBrowserObjects\Textbox.cs" />
+    <Compile Include="XConsole\ConsoleBrowserObjects\Textboxes.cs" />
     <Compile Include="XConsole\RedirectConsole.cs" />
     <Compile Include="XConsole\XConsole.cs" />
   </ItemGroup>
