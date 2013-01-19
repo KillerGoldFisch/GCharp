@@ -27,6 +27,7 @@ namespace GSharp.Threading {
             _threadStart = threadStart;
             _thread = new Thread(_thread_start);
         }
+      
 
         public void Start() {
             _thread.Start();

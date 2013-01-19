@@ -75,6 +75,7 @@
     <Compile Include="Data\DbfDotNet\[Enums].cs" />
     <Compile Include="Data\DbfDotNet\[Exceptions].cs" />
     <Compile Include="Data\DbfDotNet\[Interfaces].cs" />
+    <Compile Include="Data\Filesystem\Glob.cs" />
     <Compile Include="Data\IniFile.cs" />
     <Compile Include="Extensions\Array\ArrayExtesions.cs" />
     <Compile Include="Extensions\Bitmap\BitmapExtensions.cs" />
@@ -120,7 +121,9 @@
     <Compile Include="XConsole\RedirectConsole.cs" />
     <Compile Include="XConsole\XConsole.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Data\Filesystem" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
