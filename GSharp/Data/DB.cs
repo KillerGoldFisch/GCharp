@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using GSharp.Extensions.Array;
 using GSharp.Extensions.Object;
+using GSharp.Extensions.String;
 
 namespace GSharp.Data{
     public class DB {
@@ -15,7 +16,7 @@ namespace GSharp.Data{
         public static DB I {
             get {
                 if (_instance == null) {
-                    _instance = new DB(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\BackupProjectDB.bin");
+                    _instance = new DB(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\" + System.AppDomain.CurrentDomain.FriendlyName.Replace("vshost.","").Replace(".exe","") + ".bin");
                 }
                 return _instance;
             }
@@ -56,6 +57,18 @@ namespace GSharp.Data{
                 if (!this._editMode)
                     _saveDB();
             }
+        }
+
+        public IEnumerable<Object> Glob(string pattern)
+        {
+            return from pair in this.dicDb where pair.Key is String where ((string)pair.Key).Like(pattern) select pair.Value;
+        }
+
+        public Object GetOrDefault(Object key, Object defaultValue)
+        {
+            if(this.dicDb.ContainsKey(key))
+                return this.dicDb[key];
+            return defaultValue;
         }
 
         public void initDB(string dbfile) {
