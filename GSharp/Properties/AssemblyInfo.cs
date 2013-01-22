@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("GSharp")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Erhardt+Abt Automatisierungstechnik GmbH")]
+[assembly: AssemblyCompany("KillerGoldFisch")]
 [assembly: AssemblyProduct("GSharp")]
-[assembly: AssemblyCopyright("Copyright © Erhardt+Abt Automatisierungstechnik GmbH 2013")]
+[assembly: AssemblyCopyright("Copyright © Kevin Gliewe 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

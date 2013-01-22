@@ -34,7 +34,9 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -79,13 +81,19 @@
     <Compile Include="Data\IniFile.cs" />
     <Compile Include="Extensions\Array\ArrayExtesions.cs" />
     <Compile Include="Extensions\Bitmap\BitmapExtensions.cs" />
+    <Compile Include="Extensions\Bitmap\ImageFormat\ImageFormatExtensions.cs" />
     <Compile Include="Extensions\ByteArray\ByteArrayExtensions.cs" />
     <Compile Include="Extensions\IConvertible\IConvertibleExtensions.cs" />
     <Compile Include="Extensions\IEnumerable\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions.cs" />
     <Compile Include="Extensions\Object\Reflection\ObjectExtensionsReflection.cs" />
+    <Compile Include="Extensions\Stream\StreamExtensions.cs" />
     <Compile Include="Extensions\String\StringExtensions.cs" />
     <Compile Include="Extensions\Type\TypeExtensions.cs" />
+    <Compile Include="Logging\ILoggingHandler.cs" />
+    <Compile Include="Logging\Log.cs" />
+    <Compile Include="Logging\LogEntry.cs" />
+    <Compile Include="Networking\NetworkingHelper.cs" />
     <Compile Include="Networking\Socket\GSocket.cs" />
     <Compile Include="Networking\Socket\GSocketListener.cs" />
     <Compile Include="ObjectProxy\DataErrorInfoProxy.cs" />
@@ -100,15 +108,95 @@
     <Compile Include="Scripting\CSScrip\fileparser.cs" />
     <Compile Include="Scripting\CSScrip\GACHelper.cs" />
     <Compile Include="StringHandling\Templating\TemplateParser.cs" />
+    <Compile Include="Sys\GDIAPI.cs" />
+    <Compile Include="Sys\Process\ProcessWrapper.cs" />
     <Compile Include="Sys\Windows\Shell\ContextMenueEntrys.cs" />
+    <Compile Include="Sys\Windows\User\ImpersonateInteractiveUser.cs" />
+    <Compile Include="Sys\Windows\User\ProcessStarter.cs" />
+    <Compile Include="Sys\Windows\Win32API.cs" />
     <Compile Include="Threading\Async.cs" />
     <Compile Include="Threading\GThread.cs" />
+    <Compile Include="UI\Controls\GlacialList\BorderStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\GlacialList\ColumnCollection.cs" />
+    <Compile Include="UI\Controls\GlacialList\GlacialList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\GlacialList\GLComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\GlacialList\GLDateTimePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\GlacialList\GLEmbeddedControl.cs" />
+    <Compile Include="UI\Controls\GlacialList\GLMergeSort.cs" />
+    <Compile Include="UI\Controls\GlacialList\GLQuickSort.cs" />
+    <Compile Include="UI\Controls\GlacialList\GLTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\GlacialList\HelperFunctions.cs" />
+    <Compile Include="UI\Controls\GlacialList\ItemCollection.cs" />
+    <Compile Include="UI\Controls\GlacialList\ManagedHScrollBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\GlacialList\ManagedVScrollBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\GlacialList\ThemeRoutines.cs" />
+    <Compile Include="UI\Controls\GlacialList\Win32.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Hotkey\HotKeyUtils.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Hotkey\HotKeyWatch.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\RuntimePropertys\ObjectEditor.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Resources\Class1.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\RuntimeEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Events\EventInfoConverter.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Events\EventListenerPropertyDescriptor.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Events\EventPropertyDescriptor.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Events\InstanceEventsTab.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Fields\AllFieldsTab.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Fields\FieldPropertyDescriptor.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Methods\EditObjectCustomTypeDescriptor.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Methods\MethodDesigner.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Methods\MethodEditingConverter.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Methods\MethodEditor.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Methods\MethodPropertyDescriptor.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Methods\MethodsTab.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Methods\MethodUtils.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Methods\ParameterPropertyDescriptor.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Methods\ReturnParameterDescriptor.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Tabs\ProcessInfo\ApplicationInfo.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Tabs\ProcessInfo\ChildTypeConverter.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Tabs\ProcessInfo\ProcessInfoTab.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Tabs\ProcessInfo\ReroutedPropertyDescriptor.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Properties\AllPropertiesTab.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Utils\AbstractPropertyDescriptor.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Utils\AttributeUtils.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Utils\FieldAccesor.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Utils\Generate\ClassGenerator.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Utils\IRealValueHolder.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Utils\NativeUtils.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Utils\PropertyDescriptorUtils.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Utils\RemapPropertyDescriptor.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Utils\ShowChildListConverter.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\Utils\StaticPropertyDescriptor.cs" />
+    <Compile Include="UI\Controls\RuntimePropertys\WindowFinder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\RuntimePropertys\XPropertyGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UI\Controls\SplitButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UI\Controls\SplitButton.designer.cs">
       <DependentUpon>SplitButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Desktop\Utils.cs" />
     <Compile Include="XConsole\ConsoleBrowserObjects\ConsoleForm.cs" />
     <Compile Include="XConsole\ConsoleBrowserObjects\Label.cs" />
     <Compile Include="XConsole\ConsoleBrowserObjects\Labels.cs" />
@@ -122,7 +210,53 @@
     <Compile Include="XConsole\XConsole.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\Filesystem" />
+    <EmbeddedResource Include="UI\Controls\GlacialList\BorderStrip.resx">
+      <DependentUpon>BorderStrip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\GlacialList\GlacialList.resx">
+      <DependentUpon>GlacialList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\GlacialList\GLComboBox.resx">
+      <DependentUpon>GLComboBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\GlacialList\GLDateTimePicker.resx">
+      <DependentUpon>GLDateTimePicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\GlacialList\GLTextBox.resx">
+      <DependentUpon>GLTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\GlacialList\ManagedHScrollBar.resx">
+      <DependentUpon>ManagedHScrollBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\GlacialList\ManagedVScrollBar.resx">
+      <DependentUpon>ManagedVScrollBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\RuntimePropertys\Hotkey\HotKeyWatch.resx">
+      <DependentUpon>HotKeyWatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\RuntimePropertys\RuntimeEditor.resx">
+      <DependentUpon>RuntimeEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\RuntimePropertys\WindowFinder.resx">
+      <DependentUpon>WindowFinder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\RuntimePropertys\XPropertyGrid.resx">
+      <DependentUpon>XPropertyGrid.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UI\Controls\GlacialList\checked.bmp" />
+    <Content Include="UI\Controls\GlacialList\GlacialList.bmp" />
+    <Content Include="UI\Controls\GlacialList\GlacialList.csproj" />
+    <Content Include="UI\Controls\GlacialList\unchecked.bmp" />
+    <EmbeddedResource Include="UI\Controls\RuntimePropertys\Resources\CustomProperties.bmp" />
+    <EmbeddedResource Include="UI\Controls\RuntimePropertys\Resources\Events.bmp" />
+    <EmbeddedResource Include="UI\Controls\RuntimePropertys\Resources\Eye.bmp" />
+    <EmbeddedResource Include="UI\Controls\RuntimePropertys\Resources\Eye.cur" />
+    <EmbeddedResource Include="UI\Controls\RuntimePropertys\Resources\Eye.ico" />
+    <EmbeddedResource Include="UI\Controls\RuntimePropertys\Resources\Fields.bmp" />
+    <EmbeddedResource Include="UI\Controls\RuntimePropertys\Resources\Methods.bmp" />
+    <EmbeddedResource Include="UI\Controls\RuntimePropertys\Resources\ProcessInfo.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

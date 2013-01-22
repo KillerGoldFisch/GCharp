@@ -56,7 +56,7 @@ using System.Collections;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 
-namespace GSarp.Scripting.CSScript
+namespace GSharp.Scripting.CSScript
 {
 	
 

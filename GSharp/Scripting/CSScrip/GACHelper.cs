@@ -57,7 +57,7 @@ using System.Text;
  * 
 */
 
-namespace GSarp.Scripting.CSScript
+namespace GSharp.Scripting.CSScript
 {
 	/// <summary>
 	/// COM HR checker: just to make code more compact;

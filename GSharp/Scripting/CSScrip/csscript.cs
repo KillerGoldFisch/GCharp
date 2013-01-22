@@ -49,7 +49,7 @@ using System.Collections;
 using System.Threading;
 using System.Text;
 
-namespace GSarp.Scripting.CSScript
+namespace GSharp.Scripting.CSScript
 {
 	/// <summary>
 	/// CSExecutor is an class that implements execution of *.cs files.

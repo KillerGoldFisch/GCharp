@@ -46,7 +46,7 @@ using System.Windows.Forms;
 using System.Reflection;
 using System.Diagnostics;
 
-namespace GSarp.Scripting.CSScript
+namespace GSharp.Scripting.CSScript
 {
 	public delegate void PrintDelegate(string msg);
 	/// <summary>
@@ -69,22 +69,22 @@ namespace GSarp.Scripting.CSScript
 		/// <summary>
 		/// Invokes CSExecutor (C# script engine)
 		/// </summary>
-        static public void Execute(GSarp.Scripting.CSScript.PrintDelegate print, string[] args)
+        static public void Execute(GSharp.Scripting.CSScript.PrintDelegate print, string[] args)
 		{
 			csscript.AppInfo.appName = new FileInfo(Application.ExecutablePath).Name;
 			CSExecutor exec = new CSExecutor();
 			exec.Rethrow = Rethrow;
-            exec.Execute(args, new PrintDelegate(print != null ? print : new GSarp.Scripting.CSScript.PrintDelegate(DefaultPrint)));
+            exec.Execute(args, new PrintDelegate(print != null ? print : new GSharp.Scripting.CSScript.PrintDelegate(DefaultPrint)));
 		}
 		/// <summary>
 		/// Invokes CSExecutor (C# script engine)
 		/// </summary>
-        public void Execute(GSarp.Scripting.CSScript.PrintDelegate print, string[] args, bool rethrow)
+        public void Execute(GSharp.Scripting.CSScript.PrintDelegate print, string[] args, bool rethrow)
 		{
 			csscript.AppInfo.appName = new FileInfo(Application.ExecutablePath).Name;
 			CSExecutor exec = new CSExecutor();
 			exec.Rethrow = rethrow;
-            exec.Execute(args, new PrintDelegate(print != null ? print : new GSarp.Scripting.CSScript.PrintDelegate(DefaultPrint)));
+            exec.Execute(args, new PrintDelegate(print != null ? print : new GSharp.Scripting.CSScript.PrintDelegate(DefaultPrint)));
 		}
 		/// <summary>
 		/// Compiles script into assembly with CSExecutor

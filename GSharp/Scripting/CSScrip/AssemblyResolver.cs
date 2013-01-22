@@ -45,7 +45,7 @@ using System.IO;
 using Microsoft.CSharp;
 using System.CodeDom.Compiler;
 
-namespace GSarp.Scripting.CSScript
+namespace GSharp.Scripting.CSScript
 {
 	/// <summary>
 	/// Class for resolving assembly name to assembly file
