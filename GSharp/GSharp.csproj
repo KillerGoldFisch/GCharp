@@ -93,6 +93,7 @@
     <Compile Include="Logging\ILoggingHandler.cs" />
     <Compile Include="Logging\Log.cs" />
     <Compile Include="Logging\LogEntry.cs" />
+    <Compile Include="Logging\Logger\FileLogger.cs" />
     <Compile Include="Networking\NetworkingHelper.cs" />
     <Compile Include="Networking\Socket\GSocket.cs" />
     <Compile Include="Networking\Socket\GSocketListener.cs" />
@@ -110,12 +111,15 @@
     <Compile Include="StringHandling\Templating\TemplateParser.cs" />
     <Compile Include="Sys\GDIAPI.cs" />
     <Compile Include="Sys\Process\ProcessWrapper.cs" />
+    <Compile Include="Sys\Process\Utils.cs" />
     <Compile Include="Sys\Windows\Shell\ContextMenueEntrys.cs" />
     <Compile Include="Sys\Windows\User\ImpersonateInteractiveUser.cs" />
     <Compile Include="Sys\Windows\User\ProcessStarter.cs" />
     <Compile Include="Sys\Windows\Win32API.cs" />
     <Compile Include="Threading\Async.cs" />
     <Compile Include="Threading\GThread.cs" />
+    <Compile Include="Threading\Stressing\PrimeTool.cs" />
+    <Compile Include="UI\Controls\ComboboxItem.cs" />
     <Compile Include="UI\Controls\GlacialList\BorderStrip.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -145,6 +149,27 @@
     </Compile>
     <Compile Include="UI\Controls\GlacialList\ThemeRoutines.cs" />
     <Compile Include="UI\Controls\GlacialList\Win32.cs" />
+    <Compile Include="UI\Controls\LogList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\LogList.Designer.cs">
+      <DependentUpon>LogList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\ReadonlyPropertys\RPropertyGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\ReadonlyPropertys\RPropertyGrid.designer.cs">
+      <DependentUpon>RPropertyGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\ReadonlyPropertys\RPropertyGrid.ReadOnlyConverter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\ReadonlyPropertys\RPropertyGrid.ReadOnlyPropertyDescriptor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\ReadonlyPropertys\RPropertyGrid.ReadOnlyWrapper.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UI\Controls\RuntimePropertys\Hotkey\HotKeyUtils.cs" />
     <Compile Include="UI\Controls\RuntimePropertys\Hotkey\HotKeyWatch.cs">
       <SubType>Component</SubType>
@@ -196,6 +221,12 @@
     <Compile Include="UI\Controls\SplitButton.designer.cs">
       <DependentUpon>SplitButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Controls\ThreadManager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\ThreadManager.Designer.cs">
+      <DependentUpon>ThreadManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Desktop\Utils.cs" />
     <Compile Include="XConsole\ConsoleBrowserObjects\ConsoleForm.cs" />
     <Compile Include="XConsole\ConsoleBrowserObjects\Label.cs" />
@@ -231,6 +262,9 @@
     <EmbeddedResource Include="UI\Controls\GlacialList\ManagedVScrollBar.resx">
       <DependentUpon>ManagedVScrollBar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\LogList.resx">
+      <DependentUpon>LogList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Controls\RuntimePropertys\Hotkey\HotKeyWatch.resx">
       <DependentUpon>HotKeyWatch.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,11 +277,13 @@
     <EmbeddedResource Include="UI\Controls\RuntimePropertys\XPropertyGrid.resx">
       <DependentUpon>XPropertyGrid.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Controls\ThreadManager.resx">
+      <DependentUpon>ThreadManager.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="UI\Controls\GlacialList\checked.bmp" />
     <Content Include="UI\Controls\GlacialList\GlacialList.bmp" />
-    <Content Include="UI\Controls\GlacialList\GlacialList.csproj" />
     <Content Include="UI\Controls\GlacialList\unchecked.bmp" />
     <EmbeddedResource Include="UI\Controls\RuntimePropertys\Resources\CustomProperties.bmp" />
     <EmbeddedResource Include="UI\Controls\RuntimePropertys\Resources\Events.bmp" />

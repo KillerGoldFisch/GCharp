@@ -410,8 +410,8 @@ namespace GSharp.UI.Controls.GracialList
 		private ArrayList			NewLiveControls = new ArrayList();
 		private System.ComponentModel.IContainer components;
 
-		private GSharp.UI.Controls.GracialList.ManagedVScrollBar vPanelScrollBar;
-		private GSharp.UI.Controls.GracialList.ManagedHScrollBar hPanelScrollBar;
+		internal GSharp.UI.Controls.GracialList.ManagedVScrollBar vPanelScrollBar;
+		internal GSharp.UI.Controls.GracialList.ManagedHScrollBar hPanelScrollBar;
 
 
 		private BorderStrip			vertLeftBorderStrip;

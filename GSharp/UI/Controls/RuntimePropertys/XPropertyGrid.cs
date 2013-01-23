@@ -32,7 +32,7 @@ namespace GSharp.UI.Controls.RuntimeProperty
 	/// <summary>
 	/// Summary description for XPropertyGrid.
 	/// </summary>
-	internal class XPropertyGrid : PropertyGrid
+	public class XPropertyGrid : PropertyGrid
 	{
 		public delegate void SelectedObjectRequestHandler(object newObject);
 

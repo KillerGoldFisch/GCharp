@@ -2,12 +2,22 @@
 using System.Diagnostics;
 using System.Runtime.Remoting.Messaging;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace GSharp.Threading {
     /// <summary>
     /// Description of XThread.
     /// </summary>
     public class GThread {
+        public delegate void OnNewGThreadHandler(GThread gThread);
+        public static event OnNewGThreadHandler OnNewGThread;
+
+        public delegate void OnEndGThreadHandler(GThread gThread);
+        public static event OnEndGThreadHandler OnEndGThread;
+
+        public static List<GThread> AllGThreads = new List<GThread>();
+        
+
         public delegate void OnErrorHandler(GThread sender, Exception ex);
         public event OnErrorHandler OnError;
 
@@ -23,7 +33,9 @@ namespace GSharp.Threading {
 
         public string Name { get; set; }
 
-        public GThread(ThreadStart threadStart) {
+        public GThread(ThreadStart threadStart, string name = null) {
+            if (name == null) this.Name = GSharp.Sys.Process.Utils.GetLastMethodName();
+            else this.Name = name;
             _threadStart = threadStart;
             _thread = new Thread(_thread_start);
         }
@@ -35,11 +47,17 @@ namespace GSharp.Threading {
 
         private void _thread_start() {
             _processThread = GetCurrentProcessThread();
+            AllGThreads.Add(this);
+            if (OnNewGThread != null) OnNewGThread(this);
             try {
                 _threadStart();
             } catch (Exception ex) {
+                Logging.Log.Exception("Unhandled GThread Excaption", ex, this);
                 if (OnError != null)
                     OnError(this, ex);
+            } finally {
+                AllGThreads.Remove(this);
+                if (OnEndGThread != null) OnEndGThread(this);
             }
         }
 
