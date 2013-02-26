@@ -11,7 +11,7 @@ using System.Text;
 
 namespace GSharp.Data {
 
-    internal class INIFile {
+    public class INIFile {
 
         #region "Declarations"
 
@@ -56,7 +56,7 @@ namespace GSharp.Data {
         }
 
         // *** Read file contents into local cache ***
-        internal void Refresh() {
+        public void Refresh() {
             lock (m_Lock) {
                 StreamReader sr = null;
                 try {
@@ -114,7 +114,7 @@ namespace GSharp.Data {
         }
 
         // *** Flush local cache content ***
-        internal void Flush() {
+        public void Flush() {
             lock (m_Lock) {
                 // *** If local cache was not modified, exit ***
                 if (!m_CacheModified) return;
@@ -153,7 +153,7 @@ namespace GSharp.Data {
         }
 
         // *** Read a value from local cache ***
-        internal string GetValue(string SectionName, string Key, string DefaultValue) {
+        public string GetValue(string SectionName, string Key, string DefaultValue) {
             // *** Lazy loading ***
             if (m_Lazy) {
                 m_Lazy = false;
@@ -175,7 +175,7 @@ namespace GSharp.Data {
         }
 
         // *** Insert or modify a value in local cache ***
-        internal void SetValue(string SectionName, string Key, string Value) {
+        public void SetValue(string SectionName, string Key, string Value) {
             // *** Lazy loading ***
             if (m_Lazy) {
                 m_Lazy = false;
@@ -232,28 +232,28 @@ namespace GSharp.Data {
         }
 
         // *** Getters for various types ***
-        internal bool GetValue(string SectionName, string Key, bool DefaultValue) {
+        public bool GetValue(string SectionName, string Key, bool DefaultValue) {
             string StringValue = GetValue(SectionName, Key, DefaultValue.ToString(System.Globalization.CultureInfo.InvariantCulture));
             int Value;
             if (int.TryParse(StringValue, out Value)) return (Value != 0);
             return DefaultValue;
         }
 
-        internal int GetValue(string SectionName, string Key, int DefaultValue) {
+        public int GetValue(string SectionName, string Key, int DefaultValue) {
             string StringValue = GetValue(SectionName, Key, DefaultValue.ToString(CultureInfo.InvariantCulture));
             int Value;
             if (int.TryParse(StringValue, NumberStyles.Any, CultureInfo.InvariantCulture, out Value)) return Value;
             return DefaultValue;
         }
 
-        internal double GetValue(string SectionName, string Key, double DefaultValue) {
+        public double GetValue(string SectionName, string Key, double DefaultValue) {
             string StringValue = GetValue(SectionName, Key, DefaultValue.ToString(CultureInfo.InvariantCulture));
             double Value;
             if (double.TryParse(StringValue, NumberStyles.Any, CultureInfo.InvariantCulture, out Value)) return Value;
             return DefaultValue;
         }
 
-        internal byte[] GetValue(string SectionName, string Key, byte[] DefaultValue) {
+        public byte[] GetValue(string SectionName, string Key, byte[] DefaultValue) {
             string StringValue = GetValue(SectionName, Key, EncodeByteArray(DefaultValue));
             try {
                 return DecodeByteArray(StringValue);
@@ -263,19 +263,19 @@ namespace GSharp.Data {
         }
 
         // *** Setters for various types ***
-        internal void SetValue(string SectionName, string Key, bool Value) {
+        public void SetValue(string SectionName, string Key, bool Value) {
             SetValue(SectionName, Key, (Value) ? ("1") : ("0"));
         }
 
-        internal void SetValue(string SectionName, string Key, int Value) {
+        public void SetValue(string SectionName, string Key, int Value) {
             SetValue(SectionName, Key, Value.ToString(CultureInfo.InvariantCulture));
         }
 
-        internal void SetValue(string SectionName, string Key, double Value) {
+        public void SetValue(string SectionName, string Key, double Value) {
             SetValue(SectionName, Key, Value.ToString(CultureInfo.InvariantCulture));
         }
 
-        internal void SetValue(string SectionName, string Key, byte[] Value) {
+        public void SetValue(string SectionName, string Key, byte[] Value) {
             SetValue(SectionName, Key, EncodeByteArray(Value));
         }
 

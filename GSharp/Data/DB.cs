@@ -59,9 +59,23 @@ namespace GSharp.Data{
             }
         }
 
+        public void DeleteRecord(Object key) {
+            if(dicDb.ContainsKey(key)){
+                dicDb.Remove(key);
+                if (!this._editMode)
+                    _saveDB();
+            }
+        }
+
+        public bool ContainsKey(Object key) { return dicDb.ContainsKey(key); }
+
         public IEnumerable<Object> Glob(string pattern)
         {
             return from pair in this.dicDb where pair.Key is String where ((string)pair.Key).Like(pattern) select pair.Value;
+        }
+
+        public IEnumerable<KeyValuePair<Object, Object>> GlobPair(string pattern) {
+            return from pair in this.dicDb where pair.Key is String where ((string)pair.Key).Like(pattern) select pair;
         }
 
         public Object GetOrDefault(Object key, Object defaultValue)

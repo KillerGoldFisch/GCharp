@@ -8,11 +8,26 @@ using System.Text;
 using System.Windows.Forms;
 using GSharp.Threading;
 using GSharp.UI.Controls.GracialList;
+using System.Diagnostics;
 
 namespace GSharp.UI.Controls {
     public partial class ThreadManager : UserControl {
+
+        PerformanceCounter cpuCounter;
+        PerformanceCounter ramCounter;
+        PerformanceCounter ramCounter1;
+        PerformanceCounter ramCounter2;
+        PerformanceCounter pageCounter;
+
         public ThreadManager() {
             InitializeComponent();
+
+
+            ramCounter = new PerformanceCounter("Process", "Working Set", Process.GetCurrentProcess().ProcessName);
+            cpuCounter = new PerformanceCounter("Process", "% Processor Time", Process.GetCurrentProcess().ProcessName);//"_Total");
+            ramCounter1 = new PerformanceCounter("Memory", "Available MBytes", String.Empty);
+            ramCounter2 = new PerformanceCounter("Memory", "% Committed Bytes In Use", String.Empty);
+            pageCounter = new PerformanceCounter("Paging File", "% Usage", Process.GetCurrentProcess().ProcessName);//, "_Total");
 
             GThread.OnNewGThread += new GThread.OnNewGThreadHandler(_AddGThread);
             GThread.OnEndGThread += new GThread.OnEndGThreadHandler(_EndGThread);
@@ -67,10 +82,14 @@ namespace GSharp.UI.Controls {
                 double usage = gThread.GetCPUUsageRelative() * 100.0;
                 if(usage > 100.0) usage = 100.0;
                 if(usage < 0.0) usage = 0.0;
+                if (Double.IsNaN(usage)) usage = 100.0;
                 usage = Math.Truncate(usage * 100) / 100;
                 pb.Value = (int)usage;
                 item.SubItems[2].Text = usage.ToString() + "%";
             }
+            pbCPU.Value = (int)cpuCounter.NextValue();
+            lblPRAM.Text = "Process RAM: " + ramCounter.NextValue().ToString() + "MB";
+            lblSRAM.Text = "System RAM: " + ramCounter1.NextValue().ToString() + "MB";
         }
     }
 }

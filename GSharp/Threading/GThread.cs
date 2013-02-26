@@ -16,13 +16,28 @@ namespace GSharp.Threading {
         public static event OnEndGThreadHandler OnEndGThread;
 
         public static List<GThread> AllGThreads = new List<GThread>();
+
+        public static GThread GetCurrentGThread() {
+            Thread currentThread = Thread.CurrentThread;
+            foreach (GThread gThread in AllGThreads)
+                if (gThread.Thread == currentThread)
+                    return gThread;
+
+            GThread gthread = new GThread();
+            gthread._thread = currentThread;
+            gthread._processThread = GThread.GetCurrentProcessThread();
+            gthread.Name = GSharp.Sys.Process.Utils.GetLastMethodName();
+            AllGThreads.Add(gthread);
+            return gthread;
+        }
         
 
         public delegate void OnErrorHandler(GThread sender, Exception ex);
         public event OnErrorHandler OnError;
 
-        private Thread _thread;
-        private ProcessThread _processThread;
+
+        internal Thread _thread;
+        internal ProcessThread _processThread;
         private ThreadStart _threadStart;
 
         public Thread Thread { get { return _thread; } }
@@ -32,6 +47,8 @@ namespace GSharp.Threading {
         private long _oldProcessCPUTime = 0;
 
         public string Name { get; set; }
+
+        internal GThread() { }
 
         public GThread(ThreadStart threadStart, string name = null) {
             if (name == null) this.Name = GSharp.Sys.Process.Utils.GetLastMethodName();

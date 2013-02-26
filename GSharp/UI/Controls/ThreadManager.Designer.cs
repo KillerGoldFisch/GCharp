@@ -28,7 +28,11 @@
             GSharp.UI.Controls.GracialList.GLColumn glColumn2 = new GSharp.UI.Controls.GracialList.GLColumn();
             GSharp.UI.Controls.GracialList.GLColumn glColumn3 = new GSharp.UI.Controls.GracialList.GLColumn();
             this.timerUpdate = new System.Windows.Forms.Timer(this.components);
+            this.pbCPU = new System.Windows.Forms.ProgressBar();
             this.glGTreadList = new GSharp.UI.Controls.GracialList.GlacialList();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblPRAM = new System.Windows.Forms.Label();
+            this.lblSRAM = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // timerUpdate
@@ -36,6 +40,15 @@
             this.timerUpdate.Enabled = true;
             this.timerUpdate.Interval = 500;
             this.timerUpdate.Tick += new System.EventHandler(this.timerUpdate_Tick);
+            // 
+            // pbCPU
+            // 
+            this.pbCPU.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbCPU.Location = new System.Drawing.Point(82, 388);
+            this.pbCPU.Name = "pbCPU";
+            this.pbCPU.Size = new System.Drawing.Size(219, 23);
+            this.pbCPU.TabIndex = 1;
             // 
             // glGTreadList
             // 
@@ -101,20 +114,55 @@
             this.glGTreadList.SelectionColor = System.Drawing.Color.DarkBlue;
             this.glGTreadList.ShowBorder = true;
             this.glGTreadList.ShowFocusRect = false;
-            this.glGTreadList.Size = new System.Drawing.Size(304, 477);
+            this.glGTreadList.Size = new System.Drawing.Size(304, 382);
             this.glGTreadList.SortType = GSharp.UI.Controls.GracialList.SortTypes.InsertionSort;
             this.glGTreadList.SuperFlatHeaderColor = System.Drawing.Color.White;
             this.glGTreadList.TabIndex = 0;
             this.glGTreadList.Text = "glacialList1";
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 394);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Process CPU:";
+            // 
+            // lblPRAM
+            // 
+            this.lblPRAM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblPRAM.AutoSize = true;
+            this.lblPRAM.Location = new System.Drawing.Point(6, 421);
+            this.lblPRAM.Name = "lblPRAM";
+            this.lblPRAM.Size = new System.Drawing.Size(35, 13);
+            this.lblPRAM.TabIndex = 3;
+            this.lblPRAM.Text = "label2";
+            // 
+            // lblSRAM
+            // 
+            this.lblSRAM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblSRAM.AutoSize = true;
+            this.lblSRAM.Location = new System.Drawing.Point(110, 421);
+            this.lblSRAM.Name = "lblSRAM";
+            this.lblSRAM.Size = new System.Drawing.Size(35, 13);
+            this.lblSRAM.TabIndex = 4;
+            this.lblSRAM.Text = "label2";
+            // 
             // ThreadManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblSRAM);
+            this.Controls.Add(this.lblPRAM);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pbCPU);
             this.Controls.Add(this.glGTreadList);
             this.Name = "ThreadManager";
-            this.Size = new System.Drawing.Size(304, 477);
+            this.Size = new System.Drawing.Size(304, 468);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -122,5 +170,9 @@
 
         private GracialList.GlacialList glGTreadList;
         private System.Windows.Forms.Timer timerUpdate;
+        private System.Windows.Forms.ProgressBar pbCPU;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblPRAM;
+        private System.Windows.Forms.Label lblSRAM;
     }
 }

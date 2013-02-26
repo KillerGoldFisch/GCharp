@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Crypto\EncDec.cs" />
+    <Compile Include="Data\Crypto\StreamCrypter.cs" />
     <Compile Include="Data\DB.cs" />
     <Compile Include="Data\DbfDotNet\core\ClusteredFile.cs" />
     <Compile Include="Data\DbfDotNet\core\ColumnDefinition.cs" />

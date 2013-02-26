@@ -18,10 +18,10 @@ namespace GSharp.Test.WF {
                     GSharp.Threading.Stressing.PrimeTool.IsPrime(nr);
                     //System.Threading.Thread.Sleep(1);
                 }
-            }).Start();
+            });//.Start();
 
             Logging.Log.LoggingHandler.Add(new GSharp.Logging.Logger.FileLogger("test.log"));
-            System.Threading.Thread.CurrentThread.Name = "GUI Thread";
+            GThread.GetCurrentGThread().Name = "GUI Thread";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
