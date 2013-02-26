@@ -21,6 +21,15 @@ namespace GSharp.Data{
                 return _instance;
             }
         }
+        
+        public static bool Init(string pathOfDB)
+        {
+        	if (_instance == null) {
+                 _instance = new DB(pathOfDB);
+                 return true;
+            }
+        	return false;
+        }
 
         public static ByteArrayExtensions.DataFormatType DefaultFormatType = ByteArrayExtensions.DataFormatType.Binary;
         #endregion
@@ -72,6 +81,11 @@ namespace GSharp.Data{
         public IEnumerable<Object> Glob(string pattern)
         {
             return from pair in this.dicDb where pair.Key is String where ((string)pair.Key).Like(pattern) select pair.Value;
+        }
+        
+        public IEnumerable<T> Glob<T>(string pattern)
+        {
+        	return from pair in this.dicDb where pair.Key is String where ((string)pair.Key).Like(pattern) select (T)pair.Value;
         }
 
         public IEnumerable<KeyValuePair<Object, Object>> GlobPair(string pattern) {
