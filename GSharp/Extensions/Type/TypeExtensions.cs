@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 
-namespace GSharp.Extensions.Type {
+namespace GSharp.Extensions.TypeEx {
     /// <summary>
     /// Description of TypeExtensions.
     /// </summary>

@@ -44,5 +44,11 @@ namespace GSharp.Extensions.Array {
             }
             return res;
         }
+
+        public static T Get<T>(this T[] source, int index){
+            if (index >= 0)
+                return source[index];
+            return source[source.Length + index];
+        }
     }
 }

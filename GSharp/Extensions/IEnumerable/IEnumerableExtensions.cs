@@ -47,5 +47,17 @@ namespace GSharp.Extensions.IEnumerable {
 
             yield break;
         }
+
+        public static void Foreach<T>(this IEnumerable<T> source, Action<T> callback) {
+            foreach (T element in source)
+                callback(element);
+        }
+
+        public static TR[] Foreach<T, TR>(this IEnumerable<T> source, Func<T,TR> callback) {
+            List<TR> ret = new List<TR>();
+            foreach (T element in source)
+                ret.Add(callback(element));
+            return ret.ToArray();
+        }
     }
 }

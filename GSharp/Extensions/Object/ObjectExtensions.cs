@@ -8,7 +8,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization.Formatters.Soap;
 using System.Xml.Serialization;
 
-namespace GSharp.Extensions.Object {
+namespace GSharp.Extensions.ObjectEx {
     public static class ObjectExtensions {
         public static byte[] Serialize(this System.Object objectToSerialize, ByteArrayExtensions.DataFormatType format) {
             MemoryStream ms = new MemoryStream();

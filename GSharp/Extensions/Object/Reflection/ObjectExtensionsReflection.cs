@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 
-namespace GSharp.Extensions.Object.Reflection {
+namespace GSharp.Extensions.ObjectEx.Reflection {
     /// <summary>
     /// Description of ObjectExtensions.
     /// </summary>

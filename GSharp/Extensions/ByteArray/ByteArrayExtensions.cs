@@ -35,11 +35,13 @@ namespace GSharp.Extensions.Array {
                         throw new NotImplementedException();
                         //XmlSerializer xFormatter = new XmlSerializer();
                         //objectToSerialize = xFormatter.Deserialize(ms);
-                        break;
+                        //break;
                 }
 
-
+            #pragma warning disable 0168
             } catch (Exception ex) { }
+            #pragma warning restore 0168
+
             ms.Close();
             return objectToSerialize;
         }
@@ -65,6 +67,7 @@ namespace GSharp.Extensions.Array {
             } catch (Exception _Exception) {
                 // Error
                 //Console.WriteLine("Exception caught in process: {0}", _Exception.ToString());
+                ErhardtAbt.Diagnostics.Trace.Exception(_Exception, "Exception caught in process: " + _Exception.ToString());
             }
 
             // error occured, return false
