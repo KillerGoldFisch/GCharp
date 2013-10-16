@@ -81,6 +81,8 @@
     <Compile Include="Data\DbfDotNet\[Interfaces].cs" />
     <Compile Include="Data\Filesystem\Glob.cs" />
     <Compile Include="Data\IniFile.cs" />
+    <Compile Include="Diagnostics\FunctionInfo.cs" />
+    <Compile Include="Diagnostics\StackTraceInfo.cs" />
     <Compile Include="Extensions\Action\ActionExtensions.cs" />
     <Compile Include="Extensions\Array\ArrayExtesions.cs" />
     <Compile Include="Extensions\Array\BytaArray\BytaArrayExtension.cs" />
@@ -112,6 +114,7 @@
     <Compile Include="Extensions\SortedList\SortedListExtensions.cs" />
     <Compile Include="Extensions\Stream\StreamExtensions.cs" />
     <Compile Include="Extensions\String\StringExtensions.cs" />
+    <Compile Include="Extensions\String\StringInjectExtension.cs" />
     <Compile Include="Extensions\Timer\TimerExtensions.cs" />
     <Compile Include="Extensions\Type\TypeExtensions.cs" />
     <Compile Include="Logging\ILoggingHandler.cs" />
@@ -194,49 +197,48 @@
     <Compile Include="UI\Controls\ReadonlyPropertys\RPropertyGrid.ReadOnlyWrapper.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UI\Controls\RuntimePropertys\Hotkey\HotKeyUtils.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Hotkey\HotKeyWatch.cs">
+    <Compile Include="UI\Controls\RuntimeProperty\Hotkey\HotKeyUtils.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Hotkey\HotKeyWatch.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UI\Controls\RuntimePropertys\ObjectEditor.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Resources\Class1.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\RuntimeEditor.cs">
+    <Compile Include="UI\Controls\RuntimeProperty\ObjectEditor.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\RuntimeEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Events\EventInfoConverter.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Events\EventListenerPropertyDescriptor.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Events\EventPropertyDescriptor.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Events\InstanceEventsTab.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Fields\AllFieldsTab.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Fields\FieldPropertyDescriptor.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Methods\EditObjectCustomTypeDescriptor.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Methods\MethodDesigner.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Methods\MethodEditingConverter.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Methods\MethodEditor.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Methods\MethodPropertyDescriptor.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Methods\MethodsTab.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Methods\MethodUtils.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Methods\ParameterPropertyDescriptor.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Methods\ReturnParameterDescriptor.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Tabs\ProcessInfo\ApplicationInfo.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Tabs\ProcessInfo\ChildTypeConverter.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Tabs\ProcessInfo\ProcessInfoTab.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Tabs\ProcessInfo\ReroutedPropertyDescriptor.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Tabs\Properties\AllPropertiesTab.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Utils\AbstractPropertyDescriptor.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Utils\AttributeUtils.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Utils\FieldAccesor.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Utils\Generate\ClassGenerator.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Utils\IRealValueHolder.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Utils\NativeUtils.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Utils\PropertyDescriptorUtils.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Utils\RemapPropertyDescriptor.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Utils\ShowChildListConverter.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\Utils\StaticPropertyDescriptor.cs" />
-    <Compile Include="UI\Controls\RuntimePropertys\WindowFinder.cs">
+    <Compile Include="UI\Controls\RuntimeProperty\Tabs\Events\EventInfoConverter.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Tabs\Events\EventListenerPropertyDescriptor.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Tabs\Events\EventPropertyDescriptor.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Tabs\Events\InstanceEventsTab.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Tabs\Fields\AllFieldsTab.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Tabs\Fields\FieldPropertyDescriptor.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Tabs\Methods\EditObjectCustomTypeDescriptor.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Tabs\Methods\MethodDesigner.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Tabs\Methods\MethodEditingConverter.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Tabs\Methods\MethodEditor.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Tabs\Methods\MethodPropertyDescriptor.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Tabs\Methods\MethodsTab.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Tabs\Methods\MethodUtils.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Tabs\Methods\ParameterPropertyDescriptor.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Tabs\Methods\ReturnParameterDescriptor.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Tabs\ProcessInfo\ApplicationInfo.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Tabs\ProcessInfo\ChildTypeConverter.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Tabs\ProcessInfo\ProcessInfoTab.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Tabs\ProcessInfo\ReroutedPropertyDescriptor.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Tabs\Properties\AllPropertiesTab.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Utils\AbstractPropertyDescriptor.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Utils\AttributeUtils.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Utils\FieldAccesor.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Utils\Generate\ClassGenerator.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Utils\IRealValueHolder.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Utils\NativeUtils.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Utils\PropertyDescriptorUtils.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Utils\RemapPropertyDescriptor.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Utils\ShowChildListConverter.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\Utils\StaticPropertyDescriptor.cs" />
+    <Compile Include="UI\Controls\RuntimeProperty\WindowFinder.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\Controls\RuntimePropertys\XPropertyGrid.cs">
+    <Compile Include="UI\Controls\RuntimeProperty\XPropertyGrid.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UI\Controls\SplitButton.cs">
@@ -289,16 +291,16 @@
     <EmbeddedResource Include="UI\Controls\LogList.resx">
       <DependentUpon>LogList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Controls\RuntimePropertys\Hotkey\HotKeyWatch.resx">
+    <EmbeddedResource Include="UI\Controls\RuntimeProperty\Hotkey\HotKeyWatch.resx">
       <DependentUpon>HotKeyWatch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Controls\RuntimePropertys\RuntimeEditor.resx">
+    <EmbeddedResource Include="UI\Controls\RuntimeProperty\RuntimeEditor.resx">
       <DependentUpon>RuntimeEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Controls\RuntimePropertys\WindowFinder.resx">
+    <EmbeddedResource Include="UI\Controls\RuntimeProperty\WindowFinder.resx">
       <DependentUpon>WindowFinder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Controls\RuntimePropertys\XPropertyGrid.resx">
+    <EmbeddedResource Include="UI\Controls\RuntimeProperty\XPropertyGrid.resx">
       <DependentUpon>XPropertyGrid.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Controls\ThreadManager.resx">
@@ -309,14 +311,14 @@
     <Content Include="UI\Controls\GlacialList\checked.bmp" />
     <Content Include="UI\Controls\GlacialList\GlacialList.bmp" />
     <Content Include="UI\Controls\GlacialList\unchecked.bmp" />
-    <EmbeddedResource Include="UI\Controls\RuntimePropertys\Resources\CustomProperties.bmp" />
-    <EmbeddedResource Include="UI\Controls\RuntimePropertys\Resources\Events.bmp" />
-    <EmbeddedResource Include="UI\Controls\RuntimePropertys\Resources\Eye.bmp" />
-    <EmbeddedResource Include="UI\Controls\RuntimePropertys\Resources\Eye.cur" />
-    <EmbeddedResource Include="UI\Controls\RuntimePropertys\Resources\Eye.ico" />
-    <EmbeddedResource Include="UI\Controls\RuntimePropertys\Resources\Fields.bmp" />
-    <EmbeddedResource Include="UI\Controls\RuntimePropertys\Resources\Methods.bmp" />
-    <EmbeddedResource Include="UI\Controls\RuntimePropertys\Resources\ProcessInfo.bmp" />
+    <EmbeddedResource Include="UI\Controls\RuntimeProperty\Resources\CustomProperties.bmp" />
+    <EmbeddedResource Include="UI\Controls\RuntimeProperty\Resources\Events.bmp" />
+    <EmbeddedResource Include="UI\Controls\RuntimeProperty\Resources\Eye.bmp" />
+    <EmbeddedResource Include="UI\Controls\RuntimeProperty\Resources\Eye.cur" />
+    <EmbeddedResource Include="UI\Controls\RuntimeProperty\Resources\Eye.ico" />
+    <EmbeddedResource Include="UI\Controls\RuntimeProperty\Resources\Fields.bmp" />
+    <EmbeddedResource Include="UI\Controls\RuntimeProperty\Resources\Methods.bmp" />
+    <EmbeddedResource Include="UI\Controls\RuntimeProperty\Resources\ProcessInfo.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

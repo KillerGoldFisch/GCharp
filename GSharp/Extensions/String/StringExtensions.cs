@@ -39,6 +39,25 @@ namespace GSharp.Extensions.StringEx {
             return System.BitConverter.ToString(result);
         }
 
+        public static string Encrypt(this string str, string password = null) {
+            return GSharp.Data.Crypto.EncDec.Encrypt(str, (password != null) ? password : GSharp.Data.Crypto.EncDec.GeneratePassword());
+        }
+
+        public static string Decrypt(this string str, string password = null) {
+            return GSharp.Data.Crypto.EncDec.Decrypt(str, (password != null) ? password : GSharp.Data.Crypto.EncDec.GeneratePassword());
+        }
+
+        public static string Filter(this string str, char[] filter, bool whitelist) {
+            IEnumerable<char> chars;
+
+            if (whitelist)
+                chars = str.Where(c => filter.Contains(c));
+            else
+                chars = str.Where(c => !filter.Contains(c));
+
+            return new string(chars.ToArray());
+        }
+
         #region Truncate
         /// <summary>
         /// Truncates the string to a specified length and replace the truncated to a ...

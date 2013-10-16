@@ -115,7 +115,7 @@ namespace GSharp.Extensions {
                         d();//otherwise the simpler dlg
                     }
                 } catch (Exception ex) { //we never want a rogue exception on a random thread, it can't bubble up anywhere
-                    ErhardtAbt.Diagnostics.Trace.Exception(ex, "Async Exception:" + ex);
+                    GSharp.Logging.Log.Exception("Error during async Invoke", ex);
                 } finally {
                     FinishInvoke(res);//this will fire our callback if they used it, and clean up
                 }
@@ -161,7 +161,7 @@ namespace GSharp.Extensions {
                         Console.WriteLine(String.Format("Insufficient idle threadpool threads: {0} of {1} - min {2}, Method: {3}", threads, totalThreads, minThreads, key));
                     }
                 } catch (Exception ex) {
-                    ErhardtAbt.Diagnostics.Trace.Exception(ex, "Failed to queue in threadpool: " + ex.Message + " Method: " + key);
+                    GSharp.Logging.Log.Exception("Failed to queue in threadpool: " + ex.Message + " Method: " + key, ex);
                 }
             }
 
@@ -220,7 +220,7 @@ namespace GSharp.Extensions {
                 //set the resetevent, in case someone is using the waithandle to know when we have completed.
                 res.mre.Set();
             } catch (Exception ex) {
-                ErhardtAbt.Diagnostics.Trace.Exception(ex, "Error setting wait handle on " + (res.Method ?? "NULL") + ex);
+                GSharp.Logging.Log.Exception("Error setting wait handle on " + (res.Method ?? "NULL"), ex);
             }
 
             if (res.RMode != ReenteranceMode.Allow) {
@@ -230,7 +230,7 @@ namespace GSharp.Extensions {
                         Monitor.Exit(methodLocks[res.Method]);
                     }
                 } catch (Exception ex) {
-                    ErhardtAbt.Diagnostics.Trace.Exception(ex, "Error releasing reentrant lock on " + (res.Method ?? "NULL") + ex);
+                    GSharp.Logging.Log.Exception("Error releasing reentrant lock on " + (res.Method ?? "NULL"), ex);
                 }
             }
         }

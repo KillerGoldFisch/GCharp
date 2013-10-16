@@ -38,7 +38,7 @@
             this.cbParams = new System.Windows.Forms.ComboBox();
             this.cbAutoscroll = new System.Windows.Forms.CheckBox();
             this.glLogList = new GSharp.UI.Controls.GracialList.GlacialList();
-            this.rPropertyGrid = new GSharp.UI.Controls.ReadonlyPropertys.RPropertyGrid();
+            this.rPropertyGrid = new GSharp.UI.Controls.RuntimeProperty.XPropertyGrid();
             this.btnClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
@@ -283,7 +283,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rPropertyGrid.Location = new System.Drawing.Point(0, 0);
             this.rPropertyGrid.Name = "rPropertyGrid";
-            this.rPropertyGrid.ReadOnly = false;
             this.rPropertyGrid.Size = new System.Drawing.Size(350, 371);
             this.rPropertyGrid.TabIndex = 0;
             // 
@@ -319,7 +318,7 @@
 
         private System.Windows.Forms.SplitContainer splitContainer;
         private GracialList.GlacialList glLogList;
-        private ReadonlyPropertys.RPropertyGrid rPropertyGrid;
+        private RuntimeProperty.XPropertyGrid rPropertyGrid;
         private System.Windows.Forms.CheckBox cbFatal;
         private System.Windows.Forms.CheckBox cbError;
         private System.Windows.Forms.CheckBox cbException;

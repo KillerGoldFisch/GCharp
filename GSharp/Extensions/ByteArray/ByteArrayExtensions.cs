@@ -67,7 +67,7 @@ namespace GSharp.Extensions.Array {
             } catch (Exception _Exception) {
                 // Error
                 //Console.WriteLine("Exception caught in process: {0}", _Exception.ToString());
-                ErhardtAbt.Diagnostics.Trace.Exception(_Exception, "Exception caught in process: " + _Exception.ToString());
+                GSharp.Logging.Log.Exception("Exception caught in process: " + _Exception.ToString(), _Exception);
             }
 
             // error occured, return false

@@ -26,7 +26,7 @@ namespace GSharp.Data.Crypto {
             salt += System.Environment.Version.ToString();
             salt += System.Security.Principal.WindowsIdentity.GetCurrent().Name;
             salt += System.AppDomain.CurrentDomain.FriendlyName.Replace("vshost.", "").Replace(".exe", "");
-            return GSharp.Extensions.String.StringExtensions.GetMD5Hash(salt).Replace("-","");
+            return GSharp.Extensions.StringEx.StringExtensions.GetMD5Hash(salt).Replace("-","");
         }
 
         // Encrypt a byte array into a byte array using a key and an IV 

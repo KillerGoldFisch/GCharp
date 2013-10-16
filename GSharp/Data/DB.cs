@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using GSharp.Extensions.Array;
-using GSharp.Extensions.Object;
-using GSharp.Extensions.String;
+using GSharp.Extensions.ObjectEx;
+using GSharp.Extensions.StringEx;
 
 namespace GSharp.Data{
     public class DB {
