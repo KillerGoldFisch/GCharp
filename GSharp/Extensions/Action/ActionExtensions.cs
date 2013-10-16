@@ -2,9 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace GSharp.Extensions.ActionEx {
     public static class ActionExtensions {
+
+        public static bool Raise(this Action @thisX, TimeSpan timeout) {
+            Thread threadToKill = null;
+            Action wrappedAction = () => {
+                threadToKill = Thread.CurrentThread;
+                @thisX();
+            };
+
+            IAsyncResult result = wrappedAction.BeginInvoke(null, null);
+            if (result.AsyncWaitHandle.WaitOne((int)timeout.TotalMilliseconds)) {
+                wrappedAction.EndInvoke(result);
+                return true;
+            } else {
+                threadToKill.Abort();
+                return false;
+            }
+        }
+
 
         public static void Raise(this Action @thisX) {
             if (@thisX != null)
