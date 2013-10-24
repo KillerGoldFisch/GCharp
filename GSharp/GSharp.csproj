@@ -81,6 +81,7 @@
     <Compile Include="Data\DbfDotNet\[Interfaces].cs" />
     <Compile Include="Data\Filesystem\Glob.cs" />
     <Compile Include="Data\IniFile.cs" />
+    <Compile Include="Diagnostics\ExecutableInformations.cs" />
     <Compile Include="Diagnostics\FunctionInfo.cs" />
     <Compile Include="Diagnostics\StackTraceInfo.cs" />
     <Compile Include="Extensions\Action\ActionExtensions.cs" />
