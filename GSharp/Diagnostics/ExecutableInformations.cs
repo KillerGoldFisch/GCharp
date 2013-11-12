@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Reflection;
 
 namespace GSharp.Diagnostics {
     public class ExecutableInformations {
@@ -27,6 +28,20 @@ namespace GSharp.Diagnostics {
             dt = dt.AddSeconds(secondsSince1970);
             dt = dt.AddHours(TimeZone.CurrentTimeZone.GetUtcOffset(dt).Hours);
             return dt;
+        }
+
+        /// <summary>
+        /// Need to do this: [assembly: AssemblyVersion("1.0.*")]
+        /// </summary>
+        /// <param name="assembly"></param>
+        /// <returns></returns>
+        public static DateTime RetrieveVersionTimestamp(Assembly assembly) {
+            System.Version MyVersion = assembly.GetName().Version;
+
+            // MyVersion.Build = days after 2000-01-01
+            // MyVersion.Revision*2 = seconds after 0-hour  (NEVER daylight saving time)
+            DateTime MyTime = new DateTime(2000, 1, 1).AddDays(MyVersion.Build).AddSeconds(MyVersion.Revision * 2);
+            return MyTime;
         }
     }
 }
