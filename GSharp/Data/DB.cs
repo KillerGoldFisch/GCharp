@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-using GSharp.Extensions.Array;
+using GSharp.Extensions.ArrayEx;
 using GSharp.Extensions.ObjectEx;
 using GSharp.Extensions.StringEx;
 

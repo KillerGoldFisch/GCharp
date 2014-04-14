@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace GSharp.Extensions.Decimal {
+namespace GSharp.Extensions.DecimalEx {
     /// <summary>
     /// Decimal Extensions
     /// </summary>
@@ -13,8 +13,8 @@ namespace GSharp.Extensions.Decimal {
         /// <summary>
         /// The numbers percentage
         /// </summary>
-        /// <param name="number">The number.</param>
-        /// <param name="percent">The percent.</param>
+        /// <param key="number">The number.</param>
+        /// <param key="percent">The percent.</param>
         /// <returns>The result</returns>
         public static decimal PercentageOf(this decimal number, int percent) {
             return (decimal)(number * percent / 100);
@@ -23,8 +23,8 @@ namespace GSharp.Extensions.Decimal {
         /// <summary>
         /// Percentage of the number.
         /// </summary>
-        /// <param name="percent">The percent</param>
-        /// <param name="number">The Number</param>
+        /// <param key="percent">The percent</param>
+        /// <param key="number">The Number</param>
         /// <returns>The result</returns>
         public static decimal PercentOf(this decimal position, int total) {
             decimal result = 0;
@@ -36,8 +36,8 @@ namespace GSharp.Extensions.Decimal {
         /// <summary>
         /// The numbers percentage
         /// </summary>
-        /// <param name="number">The number.</param>
-        /// <param name="percent">The percent.</param>
+        /// <param key="number">The number.</param>
+        /// <param key="percent">The percent.</param>
         /// <returns>The result</returns>
         public static decimal PercentageOf(this decimal number, decimal percent) {
             return (decimal)(number * percent / 100);
@@ -46,8 +46,8 @@ namespace GSharp.Extensions.Decimal {
         /// <summary>
         /// Percentage of the number.
         /// </summary>
-        /// <param name="percent">The percent</param>
-        /// <param name="number">The Number</param>
+        /// <param key="percent">The percent</param>
+        /// <param key="number">The Number</param>
         /// <returns>The result</returns>
         public static decimal PercentOf(this decimal position, decimal total) {
             decimal result = 0;
@@ -59,8 +59,8 @@ namespace GSharp.Extensions.Decimal {
         /// <summary>
         /// The numbers percentage
         /// </summary>
-        /// <param name="number">The number.</param>
-        /// <param name="percent">The percent.</param>
+        /// <param key="number">The number.</param>
+        /// <param key="percent">The percent.</param>
         /// <returns>The result</returns>
         public static decimal PercentageOf(this decimal number, long percent) {
             return (decimal)(number * percent / 100);
@@ -69,8 +69,8 @@ namespace GSharp.Extensions.Decimal {
         /// <summary>
         /// Percentage of the number.
         /// </summary>
-        /// <param name="percent">The percent</param>
-        /// <param name="number">The Number</param>
+        /// <param key="percent">The percent</param>
+        /// <param key="number">The Number</param>
         /// <returns>The result</returns>
         public static decimal PercentOf(this decimal position, long total) {
             decimal result = 0;

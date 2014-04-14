@@ -7,9 +7,8 @@ using System.Xml.Serialization;
 using System.Xml;
 using System.Runtime.Serialization.Formatters.Soap;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Xml.Linq;
 
-namespace GSharp.Extensions.Serializing {
+namespace GSharp.Extensions.SerializingEx {
     public static class SerializingExtensions {
         public enum Serializer {
             XML,
@@ -132,20 +131,21 @@ namespace GSharp.Extensions.Serializing {
         }
 
         public static string PrettyXML(this string @thisX) {
-            var stringBuilder = new StringBuilder();
+            return @thisX;
+            //var stringBuilder = new StringBuilder();
 
-            var element = XElement.Parse(@thisX);
+            //var element = XElement.Parse(@thisX);
 
-            var settings = new XmlWriterSettings();
-            settings.OmitXmlDeclaration = true;
-            settings.Indent = true;
-            settings.NewLineOnAttributes = true;
+            //var settings = new XmlWriterSettings();
+            //settings.OmitXmlDeclaration = true;
+            //settings.Indent = true;
+            //settings.NewLineOnAttributes = true;
 
-            using (var xmlWriter = XmlWriter.Create(stringBuilder, settings)) {
-                element.Save(xmlWriter);
-            }
+            //using (var xmlWriter = XmlWriter.Create(stringBuilder, settings)) {
+            //    element.Save(xmlWriter);
+            //}
 
-            return stringBuilder.ToString();
+            //return stringBuilder.ToString();
         }
     }
 }

@@ -6,7 +6,11 @@ using System.Dynamic;
 using System.Reflection;
 using GSharp.Extensions.IEnumerableEx;
 
-namespace GSharp.Extensions {
+namespace GSharp.Polymorphy {
+    /// <summary>
+    /// Eine Liste die alle Aufrufe an die enthaltetene Elemente weiter leitet.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class DynamicProxyList<T> : DynamicObject {
         private List<T> _wrapped = new List<T>();
 

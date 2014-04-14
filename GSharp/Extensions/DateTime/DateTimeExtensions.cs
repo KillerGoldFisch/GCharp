@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace GSharp.Extensions.DateTimeE {
+namespace GSharp.Extensions.DateTimeEx {
     /// <summary>
     /// DateTime Extensions
     /// </summary>
     public static class DateTimeExtensions {
         #region Elapsed extension
         /// <summary>
-        /// Elapseds the time.
+        /// Gibt die vergangene Zeit seit dem Zeitpunkt zurück.
         /// </summary>
-        /// <param name="datetime">The datetime.</param>
+        /// <param key="datetime">The datetime.</param>
         /// <returns>TimeSpan</returns>
         public static TimeSpan Elapsed(this DateTime datetime) {
             return DateTime.Now - datetime;
@@ -23,9 +23,9 @@ namespace GSharp.Extensions.DateTimeE {
         /// <summary>
         /// Weeks the of year.
         /// </summary>
-        /// <param name="datetime">The datetime.</param>
-        /// <param name="weekrule">The weekrule.</param>
-        /// <param name="firstDayOfWeek">The first day of week.</param>
+        /// <param key="datetime">The datetime.</param>
+        /// <param key="weekrule">The weekrule.</param>
+        /// <param key="firstDayOfWeek">The first day of week.</param>
         /// <returns></returns>
         public static int WeekOfYear(this DateTime datetime, System.Globalization.CalendarWeekRule weekrule, DayOfWeek firstDayOfWeek) {
             System.Globalization.CultureInfo ciCurr = System.Globalization.CultureInfo.CurrentCulture;
@@ -34,8 +34,8 @@ namespace GSharp.Extensions.DateTimeE {
         /// <summary>
         /// Weeks the of year.
         /// </summary>
-        /// <param name="datetime">The datetime.</param>
-        /// <param name="firstDayOfWeek">The first day of week.</param>
+        /// <param key="datetime">The datetime.</param>
+        /// <param key="firstDayOfWeek">The first day of week.</param>
         /// <returns></returns>
         public static int WeekOfYear(this DateTime datetime, DayOfWeek firstDayOfWeek) {
             System.Globalization.DateTimeFormatInfo dateinf = new System.Globalization.DateTimeFormatInfo();
@@ -45,8 +45,8 @@ namespace GSharp.Extensions.DateTimeE {
         /// <summary>
         /// Weeks the of year.
         /// </summary>
-        /// <param name="datetime">The datetime.</param>
-        /// <param name="weekrule">The weekrule.</param>
+        /// <param key="datetime">The datetime.</param>
+        /// <param key="weekrule">The weekrule.</param>
         /// <returns></returns>
         public static int WeekOfYear(this DateTime datetime, System.Globalization.CalendarWeekRule weekrule) {
             System.Globalization.DateTimeFormatInfo dateinf = new System.Globalization.DateTimeFormatInfo();
@@ -56,8 +56,8 @@ namespace GSharp.Extensions.DateTimeE {
         /// <summary>
         /// Weeks the of year.
         /// </summary>
-        /// <param name="datetime">The datetime.</param>
-        /// <param name="weekrule">The weekrule.</param>
+        /// <param key="datetime">The datetime.</param>
+        /// <param key="weekrule">The weekrule.</param>
         /// <returns></returns>
         public static int WeekOfYear(this DateTime datetime) {
             System.Globalization.DateTimeFormatInfo dateinf = new System.Globalization.DateTimeFormatInfo();
@@ -71,9 +71,9 @@ namespace GSharp.Extensions.DateTimeE {
         /// <summary>
         /// Gets the date time for day of week.
         /// </summary>
-        /// <param name="datetime">The datetime.</param>
-        /// <param name="day">The day.</param>
-        /// <param name="firstDayOfWeek">The first day of week.</param>
+        /// <param key="datetime">The datetime.</param>
+        /// <param key="day">The day.</param>
+        /// <param key="firstDayOfWeek">The first day of week.</param>
         /// <returns></returns>
         public static DateTime GetDateTimeForDayOfWeek(this DateTime datetime, DayOfWeek day, DayOfWeek firstDayOfWeek) {
             int current = DaysFromFirstDayOfWeek(datetime.DayOfWeek, firstDayOfWeek);
@@ -88,7 +88,7 @@ namespace GSharp.Extensions.DateTimeE {
         /// <summary>
         /// Firsts the date time of week.
         /// </summary>
-        /// <param name="datetime">The datetime.</param>
+        /// <param key="datetime">The datetime.</param>
         /// <returns></returns>
         public static DateTime FirstDateTimeOfWeek(this DateTime datetime) {
             System.Globalization.DateTimeFormatInfo dateinf = new System.Globalization.DateTimeFormatInfo();
@@ -98,8 +98,8 @@ namespace GSharp.Extensions.DateTimeE {
         /// <summary>
         /// Firsts the date time of week.
         /// </summary>
-        /// <param name="datetime">The datetime.</param>
-        /// <param name="firstDayOfWeek">The first day of week.</param>
+        /// <param key="datetime">The datetime.</param>
+        /// <param key="firstDayOfWeek">The first day of week.</param>
         /// <returns></returns>
         public static DateTime FirstDateTimeOfWeek(this DateTime datetime, DayOfWeek firstDayOfWeek) {
             return datetime.AddDays(-DaysFromFirstDayOfWeek(datetime.DayOfWeek, firstDayOfWeek));
@@ -108,8 +108,8 @@ namespace GSharp.Extensions.DateTimeE {
         /// <summary>
         /// Dayses from first day of week.
         /// </summary>
-        /// <param name="current">The current.</param>
-        /// <param name="firstDayOfWeek">The first day of week.</param>
+        /// <param key="current">The current.</param>
+        /// <param key="firstDayOfWeek">The first day of week.</param>
         /// <returns></returns>
         private static int DaysFromFirstDayOfWeek(DayOfWeek current, DayOfWeek firstDayOfWeek) {
             //Sunday = 0,Monday = 1,...,Saturday = 6
@@ -118,15 +118,5 @@ namespace GSharp.Extensions.DateTimeE {
             return daysbetween;
         }
         #endregion
-
-        public static string GetValueOrDefaultToString(this DateTime? datetime, string defaultvalue) {
-            if (datetime == null) return defaultvalue;
-            return datetime.Value.ToString();
-        }
-
-        public static string GetValueOrDefaultToString(this DateTime? datetime, string format, string defaultvalue) {
-            if (datetime == null) return defaultvalue;
-            return datetime.Value.ToString(format);
-        }
     }
 }

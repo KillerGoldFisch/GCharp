@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\ConfigValue.cs" />
     <Compile Include="Data\Crypto\EncDec.cs" />
     <Compile Include="Data\Crypto\StreamCrypter.cs" />
     <Compile Include="Data\DB.cs" />
@@ -129,6 +130,8 @@
     <Compile Include="ObjectProxy\DynamicProxy.cs" />
     <Compile Include="ObjectProxy\EditableProxy.cs" />
     <Compile Include="ObjectProxy\ValidatingProxy.cs" />
+    <Compile Include="Polymorphy\DynamicProxyList.cs" />
+    <Compile Include="Polymorphy\InheritingDictinary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripting\CSScrip\AssemblyExecutor.cs" />
     <Compile Include="Scripting\CSScrip\AssemblyResolver.cs" />
@@ -146,6 +149,9 @@
     <Compile Include="Sys\Windows\Win32API.cs" />
     <Compile Include="Threading\Async.cs" />
     <Compile Include="Threading\GThread.cs" />
+    <Compile Include="Threading\StateTimer.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Threading\Stressing\PrimeTool.cs" />
     <Compile Include="UI\Controls\ComboboxItem.cs" />
     <Compile Include="UI\Controls\GlacialList\BorderStrip.cs">

@@ -5,7 +5,18 @@ using System.Text;
 
 namespace GSharp.Extensions.EnumEx {
     public static class EnumExtensions {
-
+        /// <summary>
+        /// Konvertiert zu dem Datentyp
+        /// </summary>
+        /// <typeparam name="ConvertType">
+        /// Uterstützt:
+        /// - int
+        /// - long
+        /// - short
+        /// - String
+        /// </typeparam>
+        /// <param name="e"></param>
+        /// <returns></returns>
         public static ConvertType To<ConvertType>(this Enum e) {
             object o = null;
             Type type = typeof(ConvertType);
@@ -26,8 +37,8 @@ namespace GSharp.Extensions.EnumEx {
         /// <summary>
         /// Check to see if a flags enumeration has a specific flag set.
         /// </summary>
-        /// <param name="variable">Flags enumeration to check</param>
-        /// <param name="value">Flag to check for</param>
+        /// <param key="variable">Flags enumeration to check</param>
+        /// <param key="value">Flag to check for</param>
         /// <returns></returns>
         public static bool Flag<T>(this T variable, T value) {
             if (variable == null)

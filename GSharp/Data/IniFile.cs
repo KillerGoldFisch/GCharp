@@ -3,6 +3,7 @@
 // **************************
 // *** (C)2009 S.T.A. snc ***
 // **************************
+
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -171,6 +172,23 @@ namespace GSharp.Data {
 
                 // *** Return the found value ***
                 return Value;
+            }
+        }
+
+        public bool ContainsValue(string SectionName, string Key) {
+            // *** Lazy loading ***
+            if (m_Lazy) {
+                m_Lazy = false;
+                Refresh();
+            }
+
+            lock (m_Lock) {
+                // *** Check if the section exists ***
+                Dictionary<string, string> Section;
+                if (!m_Sections.TryGetValue(SectionName, out Section)) return false;
+
+                // *** Check if the key exists ***
+                return Section.ContainsKey(Key);
             }
         }
 

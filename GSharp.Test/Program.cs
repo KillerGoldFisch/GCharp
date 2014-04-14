@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using GSharp.Data;
 
-using GSharp.Extensions.String;
+using GSharp.Extensions.StringEx;
 
 namespace GSharp.Test {
     class Program {

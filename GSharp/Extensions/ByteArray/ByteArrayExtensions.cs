@@ -6,7 +6,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization.Formatters.Soap;
 
-namespace GSharp.Extensions.Array {
+namespace GSharp.Extensions.ArrayEx {
     public static class ByteArrayExtensions {
         public enum DataFormatType {
             Binary,
@@ -14,10 +14,21 @@ namespace GSharp.Extensions.Array {
             XML
         }
 
+        /// <summary>
+        /// Konvertiert in einen UTF8 String
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public static string ToUTF8String(this byte[] data) {
             return Encoding.UTF8.GetString(data);
         }
 
+        /// <summary>
+        /// Deserialisiert die Daten zu einem Object
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="format"></param>
+        /// <returns></returns>
         public static object DeSerialize(this byte[] data, DataFormatType format) {
             MemoryStream ms = new MemoryStream(data);
             object objectToSerialize = null;
@@ -46,6 +57,12 @@ namespace GSharp.Extensions.Array {
             return objectToSerialize;
         }
 
+        /// <summary>
+        /// Fügt den übergebenen Array ab.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public static byte[] AppendByteArray(this byte[] data, byte[] a) {
             byte[] c = new byte[a.Length + data.Length]; // just one array allocation
             Buffer.BlockCopy(a, 0, c, data.Length, a.Length);
@@ -53,6 +70,12 @@ namespace GSharp.Extensions.Array {
             return c;
         }
 
+        /// <summary>
+        /// Schreibt die Daten in eine Datei.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="file"></param>
+        /// <returns></returns>
         public static bool SaveToFile(this byte[] data, string file) {
             try {
 
@@ -67,7 +90,7 @@ namespace GSharp.Extensions.Array {
             } catch (Exception _Exception) {
                 // Error
                 //Console.WriteLine("Exception caught in process: {0}", _Exception.ToString());
-                GSharp.Logging.Log.Exception("Exception caught in process: " + _Exception.ToString(), _Exception);
+                Logging.Log.Exception("Cannot safe data to File", _Exception);
             }
 
             // error occured, return false

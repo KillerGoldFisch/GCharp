@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace GSharp.Extensions.Linq {
+namespace GSharp.Extensions.LinqEx {
     /// <summary>
     /// LinQ  Extentensions
     /// </summary>
@@ -12,7 +12,7 @@ namespace GSharp.Extensions.Linq {
         /// <summary>
         /// Converts the Linq data to a commaseperated string including header.
         /// </summary>
-        /// <param name="data">The data.</param>
+        /// <param key="data">The data.</param>
         /// <returns></returns>
         public static string ToCSVString(this System.Linq.IOrderedQueryable data) {
             return ToCSVString(data, "; ");
@@ -21,8 +21,8 @@ namespace GSharp.Extensions.Linq {
         /// <summary>
         /// Converts the Linq data to a commaseperated string including header.
         /// </summary>
-        /// <param name="data">The data.</param>
-        /// <param name="delimiter">The delimiter.</param>
+        /// <param key="data">The data.</param>
+        /// <param key="delimiter">The delimiter.</param>
         /// <returns></returns>
         public static string ToCSVString(this System.Linq.IOrderedQueryable data, string delimiter) {
             return ToCSVString(data, "; ", null);
@@ -31,9 +31,9 @@ namespace GSharp.Extensions.Linq {
         /// <summary>
         /// Converts the Linq data to a commaseperated string including header.
         /// </summary>
-        /// <param name="data">The data.</param>
-        /// <param name="delimiter">The delimiter.</param>
-        /// <param name="nullvalue">The nullvalue.</param>
+        /// <param key="data">The data.</param>
+        /// <param key="delimiter">The delimiter.</param>
+        /// <param key="nullvalue">The nullvalue.</param>
         /// <returns></returns>
         public static string ToCSVString(this System.Linq.IOrderedQueryable data, string delimiter, string nullvalue) {
             StringBuilder csvdata = new StringBuilder();

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace GSharp.Extensions.Double {
+namespace GSharp.Extensions.DoubleEx {
     /// <summary>
     /// Double Extensions
     /// </summary>

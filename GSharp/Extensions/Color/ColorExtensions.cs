@@ -7,6 +7,16 @@ using GSharp.Extensions.IComparableEx;
 
 namespace GSharp.Extensions.ColorEx {
     public static class ColorExtensions {
+        /// <summary>
+        /// Erhöht den Farbwehrt um die angegebene Wehrte und
+        /// passt sie in den vorgegebenen Wehrtebereich ein.
+        /// </summary>
+        /// <param name="color"></param>
+        /// <param name="r"></param>
+        /// <param name="g"></param>
+        /// <param name="b"></param>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public static Color Pitch(this Color color, int r = 0, int g = 0, int b = 0, int a = 0) {
             int R = (color.R + r).FitInto(0, 255);
             int G = (color.G + g).FitInto(0, 255);

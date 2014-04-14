@@ -7,14 +7,19 @@ using System.Security.Cryptography;
 
 namespace GSharp.Extensions.StringEx {
     public static class StringExtensions {
+        /// <summary>
+        /// Konvertiert den String in einen Byte Array mithilfe der UTF8 Codierung.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public static byte[] ToByteArray(this string data) {
             return Encoding.UTF8.GetBytes(data);
         }
         /// <summary>
         /// Compares the string against a given pattern.
         /// </summary>
-        /// <param name="str">The string.</param>
-        /// <param name="wildcard">The wildcard, where "*" means any sequence of characters, and "?" means any single character.</param>
+        /// <param key="str">The string.</param>
+        /// <param key="wildcard">The wildcard, where "*" means any sequence of characters, and "?" means any single character.</param>
         /// <returns><c>true</c> if the string matches the given pattern; otherwise <c>false</c>.</returns>
         public static bool Like(this string str, string wildcard)
         {
@@ -24,6 +29,11 @@ namespace GSharp.Extensions.StringEx {
             ).IsMatch(str);
         }
 
+        /// <summary>
+        /// Gibt den MD5 Hash zurück
+        /// </summary>
+        /// <param name="TextToHash"></param>
+        /// <returns></returns>
         public static string GetMD5Hash(this string TextToHash) {
             //Prüfen ob Daten übergeben wurden.
             if ((TextToHash == null) || (TextToHash.Length == 0)) {
@@ -39,14 +49,22 @@ namespace GSharp.Extensions.StringEx {
             return System.BitConverter.ToString(result);
         }
 
-        public static string Encrypt(this string str, string password = null) {
-            return GSharp.Data.Crypto.EncDec.Encrypt(str, (password != null) ? password : GSharp.Data.Crypto.EncDec.GeneratePassword());
-        }
-
-        public static string Decrypt(this string str, string password = null) {
-            return GSharp.Data.Crypto.EncDec.Decrypt(str, (password != null) ? password : GSharp.Data.Crypto.EncDec.GeneratePassword());
-        }
-
+        /// <summary>
+        /// Filtert einzelne Zeichen aus dem String.
+        /// Kann im Blacklist und Whitelist Modus betrieben werden:
+        /// Whitelist-Modus:
+        ///   whitelist: true
+        ///   Es werden nur Zeichen übernommen,
+        ///   welche im filter enthalten sind.
+        /// Blacklist-Modus:
+        ///   whitelist: false
+        ///   Es werden nur Zeichen übernommen,
+        ///   welche NICHT im filter enthalten sind.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="filter"></param>
+        /// <param name="whitelist"></param>
+        /// <returns></returns>
         public static string Filter(this string str, char[] filter, bool whitelist) {
             IEnumerable<char> chars;
 
@@ -60,9 +78,9 @@ namespace GSharp.Extensions.StringEx {
 
         #region Truncate
         /// <summary>
-        /// Truncates the string to a specified length and replace the truncated to a ...
+        /// Schneidet den String ab einer bestimmten Länge ab und ersetzt die letzten Zeichen mit "..."
         /// </summary>
-        /// <param name="maxLength">total length of characters to maintain before the truncate happens</param>
+        /// <param key="maxLength">total length of characters to maintain before the truncate happens</param>
         /// <returns>truncated string</returns>
         public static string Truncate(this string text, int maxLength) {
             // replaces the truncated string to a ...
@@ -84,6 +102,12 @@ namespace GSharp.Extensions.StringEx {
         #endregion
 
         #region RepeatToLen
+        /// <summary>
+        /// Wiederholt den String um die vorgegebene Länge zu erreichen.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="len"></param>
+        /// <returns></returns>
         public static string RepeatToLen(this string text, int len) {
             string tmp = text;
             while (tmp.Length < len)
@@ -99,6 +123,13 @@ namespace GSharp.Extensions.StringEx {
             Center
         }
 
+        /// <summary>
+        /// Füllt den String bis zu der vorgegebenen länge mit Leerzeichen auf.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="len"></param>
+        /// <param name="alignment"></param>
+        /// <returns></returns>
         public static string Fill(this string text, int len, TextAlighnment alignment = TextAlighnment.Left) {
             if (text.Length > len)
                 return text.Truncate(len);
@@ -116,5 +147,14 @@ namespace GSharp.Extensions.StringEx {
             return " ".RepeatToLen(spaceToFillL) + text + " ".RepeatToLen(spaceToFillR);
         }
         #endregion
+
+        public static string Encrypt(this string str, string password = null) {
+            return GSharp.Data.Crypto.EncDec.Encrypt(str, (password != null) ? password : GSharp.Data.Crypto.EncDec.GeneratePassword());
+        }
+
+        public static string Decrypt(this string str, string password = null) {
+            return GSharp.Data.Crypto.EncDec.Decrypt(str, (password != null) ? password : GSharp.Data.Crypto.EncDec.GeneratePassword());
+        }
+
     }
 }

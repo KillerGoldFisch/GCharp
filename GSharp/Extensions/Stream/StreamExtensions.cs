@@ -4,8 +4,14 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace GSharp.Extensions.Stream {
+namespace GSharp.Extensions.StreamEx {
     public static class StreamExtensions {
+        /// <summary>
+        /// Schreibt den String in die übergebene Datei.
+        /// </summary>
+        /// <param name="inputStream"></param>
+        /// <param name="outputFile">Pfad der Datei</param>
+        /// <param name="fileMode"></param>
         public static void StreamToFile(this System.IO.Stream inputStream, string outputFile, FileMode fileMode) {
             if (inputStream == null)
                 throw new ArgumentNullException("inputStream");

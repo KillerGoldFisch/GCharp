@@ -5,11 +5,19 @@ using System.Text;
 using System.Drawing;
 using System.IO;
 
-using GSharp.Extensions.Bitmap.ImageFormat;
+using GSharp.Extensions.Bitmap.ImageFormatEx;
 using System.Drawing.Imaging;
 
-namespace GSharp.Extensions.Bitmap {
+namespace GSharp.Extensions.BitmapEx {
     public static class BitmapExtensions {
+        /// <summary>
+        /// Erstellt ein neues Bild aus dem übergebenen
+        /// und skaliert es.
+        /// </summary>
+        /// <param name="b"></param>
+        /// <param name="nWidth"></param>
+        /// <param name="nHeight"></param>
+        /// <returns></returns>
         public static System.Drawing.Bitmap Resize(this System.Drawing.Bitmap b, int nWidth, int nHeight) {
             System.Drawing.Bitmap result = new System.Drawing.Bitmap(nWidth, nHeight);
             using (Graphics g = Graphics.FromImage((Image)result))
@@ -17,6 +25,12 @@ namespace GSharp.Extensions.Bitmap {
             return result;
         }
 
+        /// <summary>
+        /// Konvertiert ein Bitmap zum JPG Format und gibt dessen Daten als Bytes zurück.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="quality"></param>
+        /// <returns></returns>
         public static Byte[] ToJpegBytes(this System.Drawing.Bitmap data, long quality)
         {
             MemoryStream ms = new MemoryStream();

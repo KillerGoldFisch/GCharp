@@ -5,7 +5,7 @@ using System.Text;
 using System.IO;
 using System.Net;
 
-using GSharp.Extensions.Stream;
+using GSharp.Extensions.StreamEx;
 
 namespace GSharp.Networking {
     public class NetworkingHelper {

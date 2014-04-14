@@ -9,6 +9,11 @@ namespace GSharp.Extensions.TypeEx {
     /// Description of TypeExtensions.
     /// </summary>
     public static class TypeExtensions {
+        /// <summary>
+        /// Prüft ob der Typ wirklich serialisierbar ist.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public static bool IsRealySerializable(this System.Type type) {
             // base case
             if (type.IsValueType || type == typeof(string)) return true;
@@ -27,6 +32,34 @@ namespace GSharp.Extensions.TypeEx {
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// Sample:
+        /// string key = typeof(MyClass)
+        ///    .GetAttributeValue((DomainNameAttribute dna) => dna.Name);
+        /// </summary>
+        /// <typeparam key="TAttribute"></typeparam>
+        /// <typeparam key="TValue"></typeparam>
+        /// <param key="type"></param>
+        /// <param key="valueSelector"></param>
+        /// <returns></returns>
+        public static TValue GetAttributeValue<TAttribute, TValue>(
+                this Type type,
+                Func<TAttribute, TValue> valueSelector)
+                where TAttribute : Attribute {
+
+            var att = type.GetCustomAttributes(
+                    typeof(TAttribute), true
+                ).FirstOrDefault() as TAttribute;
+            if (att != null) {
+                return valueSelector(att);
+            }
+            return default(TValue);
+        }
+
+        public static bool IsCastableTo(this Type _this_, Type t) {
+            return t.Equals(_this_) || _this_.IsSubclassOf(t);
         }
     }
 }
