@@ -37,6 +37,18 @@ namespace GSharp.Networking.Socket {
             _acceptorThread.Start();
         }
 
+        public GSocketListener(int port, GSocketListener.ClientArrivedHandler handler) {
+            _port = port;
+
+            ClientArrived += handler;
+
+            _tcpListener = new TcpListener(_port);
+            _tcpListener.Start();
+
+            _acceptorThread = new Thread(new ThreadStart(_acceptorloop));
+            _acceptorThread.Start();
+        }
+
         public void Kill() {
             _acceptorThread.Abort();
             _tcpListener.Stop();
