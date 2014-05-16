@@ -122,6 +122,7 @@
     <Compile Include="Logging\ILoggingHandler.cs" />
     <Compile Include="Logging\Log.cs" />
     <Compile Include="Logging\LogEntry.cs" />
+    <Compile Include="Logging\Logger\ConsoleLogger.cs" />
     <Compile Include="Logging\Logger\FileLogger.cs" />
     <Compile Include="Networking\NetworkingHelper.cs" />
     <Compile Include="Networking\Socket\GSocket.cs" />
