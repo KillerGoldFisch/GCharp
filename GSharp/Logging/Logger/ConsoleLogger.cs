@@ -14,14 +14,15 @@ namespace GSharp.Logging.Logger {
 
         #region Members
         public bool UseColor = true;
+        LogEntry.LogTypes _logTypes;
         #endregion
 
         #region Events
         #endregion
 
         #region Initialization
-        public ConsoleLogger() {
-
+        public ConsoleLogger(LogEntry.LogTypes logtypes = LogEntry.LogTypes.NoDebug) {
+            this._logTypes = logtypes;
         }
         #endregion
 
@@ -57,6 +58,9 @@ namespace GSharp.Logging.Logger {
         #region Tools
 
         private void _log(LogEntry logEntry) {
+            if ((logEntry.LogType & this._logTypes) == 0)
+                return;
+
             string Text = logEntry.TimeStamp.ToString("yyyy-MM-dd H:mm:ss.fff") + "\t";
             Text += logEntry.LogType.ToString() + "\t";
             Text += logEntry.Message + "\t";

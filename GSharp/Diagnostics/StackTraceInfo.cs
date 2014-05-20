@@ -56,8 +56,8 @@ namespace GSharp.Diagnostics {
             set { this.baseoffset = value; }
         }
 
-        public static string Inject(string text, int offset = 0) {
-            return text.Inject(new Hashtable() {
+        public static string Inject(string text, int offset = 0, IDictionary dict = null) {
+            return text.Inject(new Hashtable(dict) {
                 {"stacktrace", new StackTraceInfo(offset + 1)}
             });
         }

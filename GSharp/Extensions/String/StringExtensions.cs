@@ -8,6 +8,19 @@ using System.Security.Cryptography;
 namespace GSharp.Extensions.StringEx {
     public static class StringExtensions {
         /// <summary>
+        /// "Un-Escape"t den String.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string ToLiteral(this string input) {
+            using (var writer = new System.IO.StringWriter()) {
+                using (var provider = System.CodeDom.Compiler.CodeDomProvider.CreateProvider("CSharp")) {
+                    provider.GenerateCodeFromExpression(new System.CodeDom.CodePrimitiveExpression(input), writer, null);
+                    return writer.ToString();
+                }
+            }
+        }
+        /// <summary>
         /// Konvertiert den String in einen Byte Array mithilfe der UTF8 Codierung.
         /// </summary>
         /// <param name="data"></param>
