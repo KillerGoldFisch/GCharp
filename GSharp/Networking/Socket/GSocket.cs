@@ -37,7 +37,7 @@ namespace GSharp.Networking.Socket {
             _isActive = true;
             MaxPackSize = maxPackSize;
 
-            _readerThread = new GThread(new System.Threading.ThreadStart(_readerloop), "Reader-Tread for " + this.ToString());
+            _readerThread = new GThread(new System.Threading.ThreadStart(_readerloop), "Reader-Tread for " + this.ToString(), true);
             _readerThread.Thread.IsBackground = true;
             _readerThread.Start();
         }

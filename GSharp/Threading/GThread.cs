@@ -50,11 +50,12 @@ namespace GSharp.Threading {
 
         internal GThread() { }
 
-        public GThread(ThreadStart threadStart, string name = null) {
+        public GThread(ThreadStart threadStart, string name = null, bool isBackround = false) {
             if (name == null) this.Name = GSharp.Sys.Process.Utils.GetLastMethodName();
             else this.Name = name;
             _threadStart = threadStart;
             _thread = new Thread(_thread_start);
+            _thread.IsBackground = isBackround;
         }
       
 

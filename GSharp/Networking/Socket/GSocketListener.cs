@@ -5,10 +5,12 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using GSharp.Threading;
 
 namespace GSharp.Networking.Socket {
     public class GSocketListener {
         private int _port;
+        private bool _active = true;
 
         public int Port {
             get { return _port; }
@@ -20,7 +22,7 @@ namespace GSharp.Networking.Socket {
             get { return _tcpListener; }
         }
 
-        private Thread _acceptorThread;
+        private GThread _acceptorThread;
 
         public delegate void ClientArrivedHandler(GSocketListener sender, GSocket Client);
         public event ClientArrivedHandler ClientArrived;
@@ -33,7 +35,7 @@ namespace GSharp.Networking.Socket {
             _tcpListener = new TcpListener(address, _port);
             _tcpListener.Start();
 
-            _acceptorThread = new Thread(new ThreadStart(_acceptorloop));
+            _acceptorThread = new GThread(new ThreadStart(_acceptorloop), "Acceptor Loop", true);
             _acceptorThread.Start();
         }
 
@@ -45,17 +47,22 @@ namespace GSharp.Networking.Socket {
             _tcpListener = new TcpListener(_port);
             _tcpListener.Start();
 
-            _acceptorThread = new Thread(new ThreadStart(_acceptorloop));
+            _acceptorThread = new GThread(new ThreadStart(_acceptorloop), "Acceptor Loop", true);
             _acceptorThread.Start();
         }
 
         public void Kill() {
+            _active = false;
             _acceptorThread.Abort();
             _tcpListener.Stop();
         }
 
         private void _acceptorloop() {
-            while (true) {
+            while (this._active) {
+                if (!_tcpListener.Pending()) {
+                    Thread.Sleep(100); // choose a number (in milliseconds) that makes sense
+                    continue; // skip to next iteration of loop
+                }
                 TcpClient clientSocket = default(TcpClient);
                 clientSocket = _tcpListener.AcceptTcpClient();
                 GSocket gs = new GSocket(clientSocket);
