@@ -2,6 +2,7 @@
  
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using GSharp.Logging;
  
 namespace GSharp.Diagnostics {
  
@@ -30,8 +31,8 @@ namespace GSharp.Diagnostics {
         public FunctionInfo(string stackTraceLine) {
             
             if(regex == null) {
-                //                   bei/at [|           namespace  |  .] |    class      | . |       [.]method      |  (|       parameter   |)
-                regex = new Regex("^   \\w* ((?<namespace>[\\w_\\.]+)\\.|)(?<class>[\\w_]+)\\.(?<method>(\\.|)[\\w_]+)\\((?<parameter>[^\\)]*)\\)$");
+                //                   bei/at [|           namespace              |  .] |    class | . |       [.]method                                      |  (|       parameter     |)
+                regex = new Regex("^   \\w* ((?<namespace>[\\w_\\.][\\w_\\.1-9]*)\\.|)(?<class>.*)\\.(?<method>\\.?(<\\.[\\w_][\\w_1-9`]+>)?[\\w_][\\w_1-9]*)\\((?<parameter>[^\\)]*)\\)$");
             }
         
             Match match = regex.Match(stackTraceLine);
@@ -40,6 +41,9 @@ namespace GSharp.Diagnostics {
             this.cl = match.Groups["class"].Value;
             this.method = match.Groups["method"].Value;
             this.parameter = match.Groups["parameter"].Value;
+
+            if(this.method=="")
+                Log.Error("Can't parse FunctionInfo: " + stackTraceLine);
  
         }
         
