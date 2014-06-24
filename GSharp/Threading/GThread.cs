@@ -114,6 +114,47 @@ namespace GSharp.Threading {
             //ProcessThread pthread = thread;
         }
 
+        public class GThreadManager {
+            #region Static
+            private static GThreadManager _manager;
+            public static GThreadManager Manager {
+                get {
+                    if (_manager == null)
+                        _manager = new GThreadManager();
+                    return _manager;
+                }
+            }
+            #endregion
 
+            private System.Windows.Forms.Timer _timer = new System.Windows.Forms.Timer(); 
+
+            private GThreadManager() {
+                GThread.OnNewGThread += new OnNewGThreadHandler(GThread_OnNewGThread);
+                GThread.OnEndGThread += new OnEndGThreadHandler(GThread_OnEndGThread);
+                this._timer.Tick += new EventHandler(_timer_Tick);
+                this._timer.Interval = 200;
+                this._timer.Enabled = true;
+            }
+
+            void _timer_Tick(object sender, EventArgs e) {
+                foreach (GThread gThread in GThread.AllGThreads)
+                    if (this.CPUUsage.ContainsKey(gThread))
+                        this.CPUUsage[gThread] = gThread.GetCPUUsageRelative();
+                    else
+                        this.CPUUsage.Add(gThread, gThread.GetCPUUsageRelative());
+            }
+
+            void GThread_OnEndGThread(GThread gThread) {
+                this.CPUUsage.Remove(gThread);
+            }
+
+            void GThread_OnNewGThread(GThread gThread) {
+                this.CPUUsage.Add(gThread, gThread.GetCPUUsageRelative());
+            }
+
+            public Dictionary<GThread, double> CPUUsage = new Dictionary<GThread, double>();
+
+
+        }
     }
 }

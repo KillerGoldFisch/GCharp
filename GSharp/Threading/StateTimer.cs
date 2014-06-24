@@ -12,7 +12,7 @@ using GSharp.Extensions.TimerEx;
 //Datei  : StateTimer.cs
 
 
-namespace GSharp.Theading {
+namespace GSharp.Threading {
     [DefaultProperty("Interval")]
     [DefaultEvent("StateChangedOn")]
     public class StateTimer : Component {

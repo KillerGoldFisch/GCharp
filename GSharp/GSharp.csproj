@@ -150,6 +150,24 @@
     <Compile Include="Sys\Windows\Win32API.cs" />
     <Compile Include="Threading\Async.cs" />
     <Compile Include="Threading\GThread.cs" />
+    <Compile Include="Threading\GThreadControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Threading\GThreadControl.Designer.cs">
+      <DependentUpon>GThreadControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Threading\GThreadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Threading\GThreadForm.Designer.cs">
+      <DependentUpon>GThreadForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Threading\GThreadListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Threading\GThreadListControl.Designer.cs">
+      <DependentUpon>GThreadListControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Threading\StateTimer.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -275,6 +293,15 @@
     <Compile Include="XConsole\XConsole.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Threading\GThreadControl.resx">
+      <DependentUpon>GThreadControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Threading\GThreadForm.resx">
+      <DependentUpon>GThreadForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Threading\GThreadListControl.resx">
+      <DependentUpon>GThreadListControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Controls\GlacialList\BorderStrip.resx">
       <DependentUpon>BorderStrip.cs</DependentUpon>
     </EmbeddedResource>

@@ -6,6 +6,21 @@ using System.Text;
 namespace GSharp.Extensions.ActionEx {
     public static class ActionExtensions {
 
+        public static void DoLater(this Action @thisX, TimeSpan delay) {
+            /*System.Threading.Timer timer = new System.Threading.Timer(
+                (object state) => { @thisX(); },
+                null,
+                delay,
+                TimeSpan.FromMilliseconds(-1)
+                );*/
+
+            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+
+            timer.Interval = (int)delay.TotalMilliseconds;
+            timer.Tick += (object sender, EventArgs e) => { timer.Enabled = false; @thisX(); };
+            timer.Enabled = true;
+        }
+
         /// <summary>
         /// Führt die Action aus wenn sie nicht null ist
         /// </summary>
