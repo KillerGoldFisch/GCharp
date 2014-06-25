@@ -20,7 +20,7 @@ namespace GSharp.Scripting
         private object evaluator = null;
         private Type evaluatorType = null;
         private CodeDomProvider compiler;
-        private CompilerParameters parameters;
+        public CompilerParameters Parameters = new CompilerParameters();
         private CompilerResults results;
         Assembly assembly;
         private string source;
@@ -46,6 +46,18 @@ namespace GSharp.Scripting
                 //    Console.WriteLine(an.ToString());
                 //}
             }
+
+            Parameters.GenerateInMemory = true;
+            /*Parameters.ReferencedAssemblies.Add("System.Core.dll");
+            Parameters.ReferencedAssemblies.Add("System.dll");
+            Parameters.ReferencedAssemblies.Add("Microsoft.CSharp.dll");*/
+
+            var assemblies = AppDomain.CurrentDomain
+                .GetAssemblies()
+                .Where(a => !a.IsDynamic)
+                .Select(a => a.Location);
+
+            Parameters.ReferencedAssemblies.AddRange(assemblies.ToArray());
         }
 
         public void Unload()
@@ -149,12 +161,8 @@ namespace GSharp.Scripting
                     compiler = new VBCodeProvider();
                     break;
             }
-            parameters = new CompilerParameters();
-            parameters.GenerateInMemory = true;
-            parameters.ReferencedAssemblies.Add("System.Core.dll");
-            parameters.ReferencedAssemblies.Add("System.dll");
-            parameters.ReferencedAssemblies.Add("Microsoft.CSharp.dll");
-            results = compiler.CompileAssemblyFromSource(parameters, source);
+
+            results = compiler.CompileAssemblyFromSource(this.Parameters, source);
             // Check for compile errors / warnings
             if (results.Errors.HasErrors || results.Errors.HasWarnings)
             {
