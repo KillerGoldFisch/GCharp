@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.JScript" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -140,6 +141,7 @@
     <Compile Include="Scripting\CSScrip\CSScriptLib.cs" />
     <Compile Include="Scripting\CSScrip\fileparser.cs" />
     <Compile Include="Scripting\CSScrip\GACHelper.cs" />
+    <Compile Include="Scripting\ScriptEngine.cs" />
     <Compile Include="StringHandling\Templating\TemplateParser.cs" />
     <Compile Include="Sys\GDIAPI.cs" />
     <Compile Include="Sys\Process\ProcessWrapper.cs" />
