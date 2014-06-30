@@ -32,7 +32,7 @@ namespace GSharp.Diagnostics {
             
             if(regex == null) {
                 //                   bei/at [|           namespace              |  .] |    class | . |       [.]method                                      |  (|       parameter     |)
-                regex = new Regex("^   \\w* ((?<namespace>[\\w_\\.][\\w_\\.1-9]*)\\.|)(?<class>.*)\\.(?<method>\\.?(<\\.[\\w_][\\w_1-9`]+>)?[\\w_][\\w_1-9]*)\\((?<parameter>[^\\)]*)\\)$");
+                regex = new Regex("^   \\w* ((?<namespace>[\\w_\\.][\\w_\\.1-9]*)\\.|)(?<class>.*)\\.(?<method>\\.?(<\\.[\\w_][\\w_1-9`]+>)?[\\w_][\\w_1-9]*)\\((?<parameter>[^\\)]*)\\)( .*)?$");
             }
         
             Match match = regex.Match(stackTraceLine);
