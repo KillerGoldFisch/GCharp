@@ -135,6 +135,11 @@
     <Compile Include="Polymorphy\DynamicProxyList.cs" />
     <Compile Include="Polymorphy\InheritingDictinary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Scripting\CSScrip\AssemblyExecutor.cs" />
     <Compile Include="Scripting\CSScrip\AssemblyResolver.cs" />
     <Compile Include="Scripting\CSScrip\csscript.cs" />
@@ -281,6 +286,70 @@
     <Compile Include="UI\Controls\ThreadManager.Designer.cs">
       <DependentUpon>ThreadManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Controls\Tree\Column.cs" />
+    <Compile Include="UI\Controls\Tree\ColumnCollection.cs" />
+    <Compile Include="UI\Controls\Tree\DrawContext.cs" />
+    <Compile Include="UI\Controls\Tree\DropPosition.cs" />
+    <Compile Include="UI\Controls\Tree\EditorContext.cs" />
+    <Compile Include="UI\Controls\Tree\enums.cs" />
+    <Compile Include="UI\Controls\Tree\InputState.cs" />
+    <Compile Include="UI\Controls\Tree\InputWithControl.cs" />
+    <Compile Include="UI\Controls\Tree\InputWithShift.cs" />
+    <Compile Include="UI\Controls\Tree\IToolTipProvider.cs" />
+    <Compile Include="UI\Controls\Tree\ITreeModel.cs" />
+    <Compile Include="UI\Controls\Tree\MouseArgs.cs" />
+    <Compile Include="UI\Controls\Tree\Node.cs" />
+    <Compile Include="UI\Controls\Tree\NodeControls\BaseTextControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Tree\NodeControls\BindableControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Tree\NodeControls\EditableControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Tree\NodeControls\NodeCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Tree\NodeControls\NodeComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Tree\NodeControls\NodeControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Tree\NodeControls\NodeControlsCollection.cs" />
+    <Compile Include="UI\Controls\Tree\NodeControls\NodeIcon.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Tree\NodeControls\NodePlusMinus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Tree\NodeControls\NodeStateIcon.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Tree\NodeControls\NodeTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Tree\NormalInputState.cs" />
+    <Compile Include="UI\Controls\Tree\ResizeColumnState.cs" />
+    <Compile Include="UI\Controls\Tree\TextHelper.cs" />
+    <Compile Include="UI\Controls\Tree\TreeColumn.cs" />
+    <Compile Include="UI\Controls\Tree\TreeColumnCollection.cs" />
+    <Compile Include="UI\Controls\Tree\TreeColumnEventArgs.cs" />
+    <Compile Include="UI\Controls\Tree\TreeModel.cs" />
+    <Compile Include="UI\Controls\Tree\TreeModelEventArgs.cs" />
+    <Compile Include="UI\Controls\Tree\TreeNodeAdv.cs" />
+    <Compile Include="UI\Controls\Tree\TreeNodeAdvMouseEventArgs.cs" />
+    <Compile Include="UI\Controls\Tree\TreePath.cs" />
+    <Compile Include="UI\Controls\Tree\TreePathEventArgs.cs" />
+    <Compile Include="UI\Controls\Tree\TreeViewAdv.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Tree\TreeViewAdv.Designer.cs">
+      <DependentUpon>TreeViewAdv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\Tree\TreeViewAdvCancelEventArgs.cs" />
+    <Compile Include="UI\Controls\Tree\TreeViewAdvEventArgs.cs" />
     <Compile Include="UI\Desktop\Utils.cs" />
     <Compile Include="XConsole\ConsoleBrowserObjects\ConsoleForm.cs" />
     <Compile Include="XConsole\ConsoleBrowserObjects\Label.cs" />
@@ -295,6 +364,10 @@
     <Compile Include="XConsole\XConsole.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Threading\GThreadControl.resx">
       <DependentUpon>GThreadControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -345,6 +418,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\check.bmp" />
+    <Content Include="Resources\Folder.bmp" />
+    <Content Include="Resources\FolderClosed.bmp" />
+    <Content Include="Resources\Leaf.bmp" />
+    <Content Include="Resources\minus.bmp" />
+    <Content Include="Resources\plus.bmp" />
+    <Content Include="Resources\uncheck.bmp" />
+    <Content Include="Resources\unknown.bmp" />
     <Content Include="UI\Controls\GlacialList\checked.bmp" />
     <Content Include="UI\Controls\GlacialList\GlacialList.bmp" />
     <Content Include="UI\Controls\GlacialList\unchecked.bmp" />
@@ -356,6 +437,10 @@
     <EmbeddedResource Include="UI\Controls\RuntimeProperty\Resources\Fields.bmp" />
     <EmbeddedResource Include="UI\Controls\RuntimeProperty\Resources\Methods.bmp" />
     <EmbeddedResource Include="UI\Controls\RuntimeProperty\Resources\ProcessInfo.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="UI\Controls\Tree\ClassDiagram.cd" />
+    <None Include="UI\Controls\Tree\NodeControls\ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
