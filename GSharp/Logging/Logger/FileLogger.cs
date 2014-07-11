@@ -39,8 +39,10 @@ namespace GSharp.Logging.Logger {
             foreach (Object o in logEntry.Params)
                 Text += o.ToString() + ";";
 
-            using (StreamWriter w = File.AppendText(_outFile)) {
-                w.WriteLine(Text);
+            lock (_outFile) {
+                using (StreamWriter w = File.AppendText(_outFile)) {
+                    w.WriteLine(Text);
+                }
             }
         }
 
@@ -49,8 +51,9 @@ namespace GSharp.Logging.Logger {
         public LogEntry.LogTypes LogFilter;
 
         public FileLogger(string file, LogEntry.LogTypes logFilter = LogEntry.LogTypes.All) {
+
             FileInfo f = new FileInfo(file);
-            if(f.Exists)
+            if (f.Exists)
                 if (f.IsReadOnly) throw new FieldAccessException(file);
             _outFile = new FileInfo(file).FullName;
             LogFilter = logFilter;
