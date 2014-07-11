@@ -12,6 +12,7 @@ namespace GSharp.Extensions.SerializingEx {
     public static class SerializingExtensions {
         public enum Serializer {
             XML,
+            PrettyXML,
             Binary,
             Soap
         }
@@ -19,7 +20,9 @@ namespace GSharp.Extensions.SerializingEx {
         public static string Serialize<T>(this T @thisX, Serializer serializer) {
             switch (serializer) {
                 case Serializer.XML:
-                    return @thisX.SerializeXML();
+                    return @thisX.SerializeXML(false);
+                case Serializer.PrettyXML:
+                    return @thisX.SerializeXML(true);
                 case Serializer.Soap:
                     return @thisX.SerializeSoap();
                 case Serializer.Binary:
@@ -32,6 +35,8 @@ namespace GSharp.Extensions.SerializingEx {
         public static T Deserialize<T>(this string @thisX, Serializer serializer) {
             switch (serializer) {
                 case Serializer.XML:
+                    return @thisX.DeserializeXML<T>();
+                case Serializer.PrettyXML:
                     return @thisX.DeserializeXML<T>();
                 case Serializer.Soap:
                     return @thisX.DeserializeSoap<T>();
@@ -131,21 +136,21 @@ namespace GSharp.Extensions.SerializingEx {
         }
 
         public static string PrettyXML(this string @thisX) {
-            return @thisX;
-            //var stringBuilder = new StringBuilder();
+            //return @thisX;
+            var stringBuilder = new StringBuilder();
 
-            //var element = XElement.Parse(@thisX);
+            var element = System.Xml.Linq.XElement.Parse(@thisX);
 
-            //var settings = new XmlWriterSettings();
-            //settings.OmitXmlDeclaration = true;
-            //settings.Indent = true;
-            //settings.NewLineOnAttributes = true;
+            var settings = new XmlWriterSettings();
+            settings.OmitXmlDeclaration = true;
+            settings.Indent = true;
+            settings.NewLineOnAttributes = true;
 
-            //using (var xmlWriter = XmlWriter.Create(stringBuilder, settings)) {
-            //    element.Save(xmlWriter);
-            //}
+            using (var xmlWriter = XmlWriter.Create(stringBuilder, settings)) {
+                element.Save(xmlWriter);
+            }
 
-            //return stringBuilder.ToString();
+            return stringBuilder.ToString();
         }
     }
 }

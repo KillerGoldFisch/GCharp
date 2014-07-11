@@ -40,7 +40,7 @@
             // timerUpdate
             // 
             this.timerUpdate.Enabled = true;
-            this.timerUpdate.Interval = 200;
+            this.timerUpdate.Interval = 600;
             this.timerUpdate.Tick += new System.EventHandler(this.timerUpdate_Tick);
             // 
             // GThreadListControl
@@ -52,6 +52,7 @@
             this.MinimumSize = new System.Drawing.Size(314, 0);
             this.Name = "GThreadListControl";
             this.Size = new System.Drawing.Size(344, 270);
+            this.Load += new System.EventHandler(this.GThreadListControl_Load);
             this.ResumeLayout(false);
 
         }

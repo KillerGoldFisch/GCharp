@@ -74,7 +74,8 @@ namespace GSharp.Threading {
                 if (OnError != null)
                     OnError(this, ex);
             } finally {
-                AllGThreads.Remove(this);
+                if(AllGThreads.Contains(this))
+                    AllGThreads.Remove(this);
                 if (OnEndGThread != null) OnEndGThread(this);
             }
         }
@@ -155,6 +156,23 @@ namespace GSharp.Threading {
             public Dictionary<GThread, double> CPUUsage = new Dictionary<GThread, double>();
 
 
+        }
+
+        public class CycleSleeper {
+            DateTime _lastSleep = DateTime.Now;
+            TimeSpan _cycleTime = TimeSpan.FromMilliseconds(40);
+            public CycleSleeper(TimeSpan cycleTime) {
+                this._cycleTime = cycleTime;
+            }
+
+            public void Sleep() {
+                
+                TimeSpan sleep = _cycleTime - (DateTime.Now - _lastSleep);
+                if(sleep.Ticks<0)
+                    sleep = TimeSpan.FromTicks(0);
+                Thread.Sleep(sleep);
+                _lastSleep = DateTime.Now;
+            }
         }
     }
 }

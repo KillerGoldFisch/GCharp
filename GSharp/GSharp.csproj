@@ -83,6 +83,7 @@
     <Compile Include="Data\DbfDotNet\[Interfaces].cs" />
     <Compile Include="Data\Filesystem\Glob.cs" />
     <Compile Include="Data\IniFile.cs" />
+    <Compile Include="Diagnostics\CPSCounter.cs" />
     <Compile Include="Diagnostics\ExecutableInformations.cs" />
     <Compile Include="Diagnostics\FunctionInfo.cs" />
     <Compile Include="Diagnostics\StackTraceInfo.cs" />
@@ -120,6 +121,7 @@
     <Compile Include="Extensions\String\StringInjectExtension.cs" />
     <Compile Include="Extensions\Timer\TimerExtensions.cs" />
     <Compile Include="Extensions\Type\TypeExtensions.cs" />
+    <Compile Include="Globalisation\Culture.cs" />
     <Compile Include="Logging\ILoggingHandler.cs" />
     <Compile Include="Logging\Log.cs" />
     <Compile Include="Logging\LogEntry.cs" />

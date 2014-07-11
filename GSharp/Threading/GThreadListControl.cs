@@ -11,7 +11,7 @@ namespace GSharp.Threading {
     public partial class GThreadListControl : UserControl {
         List<GThreadControl> _controls = new List<GThreadControl>();
 
-        public GThreadListControl(IEnumerable<GThread> threads) {
+        /*public GThreadListControl(IEnumerable<GThread> threads) {
             InitializeComponent();
 
             this.timerUpdate.Enabled = true;
@@ -20,20 +20,12 @@ namespace GSharp.Threading {
                 this.AddThread(t);
 
             GThread.OnEndGThread += new GThread.OnEndGThreadHandler(GThread_OnEndGThread);
-        }
+        }*/
 
 
 
         public GThreadListControl() {
             InitializeComponent();
-
-            this.timerUpdate.Enabled = true;
-
-            foreach (GThread t in GThread.AllGThreads)
-                this.AddThread(t);
-
-            GThread.OnEndGThread+=new GThread.OnEndGThreadHandler(GThread_OnEndGThread);
-            GThread.OnNewGThread += new GThread.OnNewGThreadHandler(GThread_OnNewGThread);
         }
 
         public void AddThread(GThread thread) {
@@ -104,5 +96,16 @@ namespace GSharp.Threading {
             }
         }
         #endregion
+
+        private void GThreadListControl_Load(object sender, EventArgs e) {
+
+            this.timerUpdate.Enabled = true;
+
+            foreach (GThread t in GThread.AllGThreads)
+                this.AddThread(t);
+
+            GThread.OnEndGThread += new GThread.OnEndGThreadHandler(GThread_OnEndGThread);
+            GThread.OnNewGThread += new GThread.OnNewGThreadHandler(GThread_OnNewGThread);
+        }
     }
 }
