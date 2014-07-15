@@ -122,17 +122,21 @@ namespace GSharp.Extensions {
             };
 
             if (control != null) {
-                res.control = control;
-                res.result = AsyncAction.ControlInvoked;
-                if (!async) {
-                    if (!control.InvokeRequired) {
-                        res.completedSynchronously = true;
-                        dlg();
+                try {
+                    res.control = control;
+                    res.result = AsyncAction.ControlInvoked;
+                    if (!async) {
+                        if (!control.InvokeRequired) {
+                            res.completedSynchronously = true;
+                            dlg();
+                        } else {
+                            control.Invoke(dlg);
+                        }
                     } else {
-                        control.Invoke(dlg);
+                        control.BeginInvoke(dlg);
                     }
-                } else {
-                    control.BeginInvoke(dlg);
+                } catch (Exception ex) {
+                    GSharp.Logging.Log.Exception("Error during async Invoke", ex);
                 }
                 return res;
             } //don't catch these errors - if this fails, we shouldn't try a real thread or threadpool!
@@ -155,10 +159,10 @@ namespace GSharp.Extensions {
                             return res;
                         } else {
                             //according to docs, this "won't ever happen" - exception instead, but just for kicks.
-                            Console.WriteLine("Failed to queue in threadpool.", "Method: " + key);
+                            GSharp.Logging.Log.Error("Failed to queue in threadpool. Method: " + key);
                         }
                     } else {
-                        Console.WriteLine(String.Format("Insufficient idle threadpool threads: {0} of {1} - min {2}, Method: {3}", threads, totalThreads, minThreads, key));
+                        GSharp.Logging.Log.Error(String.Format("Insufficient idle threadpool threads: {0} of {1} - min {2}, Method: {3}", threads, totalThreads, minThreads, key));
                     }
                 } catch (Exception ex) {
                     GSharp.Logging.Log.Exception("Failed to queue in threadpool: " + ex.Message + " Method: " + key, ex);

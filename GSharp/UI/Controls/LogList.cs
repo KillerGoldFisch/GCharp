@@ -10,6 +10,7 @@ using GSharp.Logging;
 using GSharp.UI.Controls.GracialList;
 using GSharp.UI.Controls.RuntimeProperty;
 using GSharp.Threading;
+using GSharp.Extensions;
 
 namespace GSharp.UI.Controls {
     public partial class LogList : UserControl {

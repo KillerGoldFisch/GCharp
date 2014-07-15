@@ -157,7 +157,6 @@
     <Compile Include="Sys\Windows\User\ImpersonateInteractiveUser.cs" />
     <Compile Include="Sys\Windows\User\ProcessStarter.cs" />
     <Compile Include="Sys\Windows\Win32API.cs" />
-    <Compile Include="Threading\Async.cs" />
     <Compile Include="Threading\GThread.cs" />
     <Compile Include="Threading\GThreadControl.cs">
       <SubType>UserControl</SubType>
