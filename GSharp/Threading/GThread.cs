@@ -56,6 +56,7 @@ namespace GSharp.Threading {
             _threadStart = threadStart;
             _thread = new Thread(_thread_start);
             _thread.IsBackground = isBackround;
+            _thread.Name = this.Name;
         }
       
 
