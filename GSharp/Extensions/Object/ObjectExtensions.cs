@@ -59,7 +59,7 @@ namespace GSharp.Extensions.ObjectEx {
         /// <returns></returns>
         public static bool IsCastableTo(this System.Object _this_, Type t) {
             Type thisType = _this_.GetType();
-            return t.Equals(thisType) || thisType.IsSubclassOf(t);
+            return t.Equals(thisType) || thisType.IsSubclassOf(t) || t.IsAssignableFrom(thisType);
         }
     }
 }
