@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\StringValueAttribute.cs" />
     <Compile Include="Data\ConfigValue.cs" />
     <Compile Include="Data\Crypto\EncDec.cs" />
     <Compile Include="Data\Crypto\StreamCrypter.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Data\DbfDotNet\[Enums].cs" />
     <Compile Include="Data\DbfDotNet\[Exceptions].cs" />
     <Compile Include="Data\DbfDotNet\[Interfaces].cs" />
+    <Compile Include="Data\Dump.cs" />
     <Compile Include="Data\Filesystem\Glob.cs" />
     <Compile Include="Data\IniFile.cs" />
     <Compile Include="Diagnostics\CPSCounter.cs" />
@@ -112,6 +114,7 @@
     <Compile Include="Extensions\Int\IntExtensions.cs" />
     <Compile Include="Extensions\Linq\LinqExtensions.cs" />
     <Compile Include="Extensions\Long\LongExtensions.cs" />
+    <Compile Include="Extensions\MemoryStream\MemoryStreamEx.cs" />
     <Compile Include="Extensions\Object\ObjectExtensions.cs" />
     <Compile Include="Extensions\Object\Reflection\ObjectExtensionsReflection.cs" />
     <Compile Include="Extensions\Serializing\SerializingExtensions.cs" />
@@ -128,8 +131,30 @@
     <Compile Include="Logging\Logger\ConsoleLogger.cs" />
     <Compile Include="Logging\Logger\FileLogger.cs" />
     <Compile Include="Networking\NetworkingHelper.cs" />
+    <Compile Include="Networking\RPC\Protokoll\BasePacket.cs" />
+    <Compile Include="Networking\RPC\Protokoll\BaseRequest.cs" />
+    <Compile Include="Networking\RPC\Protokoll\BaseResponse.cs" />
+    <Compile Include="Networking\RPC\Protokoll\ByteWriter.cs" />
+    <Compile Include="Networking\RPC\Protokoll\ExceptionResponse.cs" />
+    <Compile Include="Networking\RPC\Protokoll\GetMemberRequest.cs" />
+    <Compile Include="Networking\RPC\Protokoll\GetMemberResponse.cs" />
+    <Compile Include="Networking\RPC\Protokoll\InvokeRequest.cs" />
+    <Compile Include="Networking\RPC\Protokoll\InvokeResponse.cs" />
+    <Compile Include="Networking\RPC\Protokoll\ProxyHolder.cs" />
+    <Compile Include="Networking\RPC\Protokoll\ProxyRequest.cs" />
+    <Compile Include="Networking\RPC\Protokoll\ProxyResponse.cs" />
+    <Compile Include="Networking\RPC\Protokoll\RPCBase.cs" />
+    <Compile Include="Networking\RPC\Protokoll\SetMemberRequest.cs" />
+    <Compile Include="Networking\RPC\Protokoll\SetMemberResponse.cs" />
+    <Compile Include="Networking\RPC\RPCClient.cs" />
+    <Compile Include="Networking\RPC\RPCProxyObject.cs" />
+    <Compile Include="Networking\RPC\RPCServer.cs" />
+    <Compile Include="Networking\RPC\RPCServerManager.cs" />
+    <Compile Include="Networking\Socket\BaseListener.cs" />
+    <Compile Include="Networking\Socket\BaseSocket.cs" />
     <Compile Include="Networking\Socket\GSocket.cs" />
     <Compile Include="Networking\Socket\GSocketListener.cs" />
+    <Compile Include="Networking\Socket\SslSocket.cs" />
     <Compile Include="ObjectProxy\DataErrorInfoProxy.cs" />
     <Compile Include="ObjectProxy\DynamicProxy.cs" />
     <Compile Include="ObjectProxy\EditableProxy.cs" />

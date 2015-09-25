@@ -152,5 +152,34 @@ namespace GSharp.Extensions.ObjectEx.ReflectionEx {
             } catch (Exception) { }
             return false;
         }
+
+        /// <summary>
+        /// Setzt die Property anhand ihres Namens
+        /// </summary>
+        /// <param name="this_"></param>
+        /// <param name="name">Name der Property</param>
+        /// <param name="val">Wehrt der der Property zugewiesen werden soll</param>
+        /// <returns>Gibt zurueck ob des Setzten erfolgreich war</returns>
+        public static bool SetProperty(this System.Object @this_, string name, object val)
+        {
+            try
+            {
+                PropertyInfo propinfo = @this_.GetType().GetProperty(name, BindingFlags.Public | BindingFlags.Instance);
+                //Nur setzten wenn die Property gefunden wurde und schreibbar ist
+                if (propinfo != null && propinfo.CanWrite)
+                {
+                    Type destType = propinfo.PropertyType;
+                    Type srcType = val.GetType();
+                    //Nur setzten wenn der uebergebene Typ zu dem Propertytyp gecastet werden kann.
+                    if (srcType.IsSubclassOf(destType) || srcType.Equals(destType))
+                    {
+                        propinfo.SetValue(@this_, val, null);
+                        return true;
+                    }
+                }
+            }
+            catch (Exception) { }
+            return false;
+        }
     }
 }

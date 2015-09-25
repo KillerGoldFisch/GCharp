@@ -212,5 +212,45 @@ namespace GSharp.Extensions.IEnumerableEx {
                     return false;
             return true;
         }
+
+        /// <summary>
+        /// Ruft die Action für jedes Element auf.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="callback"></param>
+        public static void Foreach<T>(this System.Collections.IEnumerable source, Action<T> callback)
+        {
+            foreach (var element in source)
+                callback((T)element);
+        }
+
+        /// <summary>
+        /// Ruft die Func für jedes Element auf und
+        /// gibt die Rückgabewehrte zurück.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TR"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="callback"></param>
+        /// <returns></returns>
+        public static TR[] Foreach<T, TR>(this System.Collections.IEnumerable source, Func<T, TR> callback)
+        {
+            List<TR> ret = new List<TR>();
+            foreach (var element in source)
+                ret.Add(callback((T)element));
+            return ret.ToArray();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static IEnumerable<T> MakeGeneric<T>(this System.Collections.IEnumerable source)
+        {
+            foreach (var element in source)
+                yield return (T)element;
+        }
     }
 }

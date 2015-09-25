@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization.Formatters.Soap;
+using System.Security.Cryptography;
 
 namespace GSharp.Extensions.ArrayEx {
     public static class ByteArrayExtensions {
@@ -95,6 +96,21 @@ namespace GSharp.Extensions.ArrayEx {
 
             // error occured, return false
             return false;
+        }
+
+        /// <summary>
+        /// Gibt den Hash-Wehrt der Array-Daten zurück.
+        /// </summary>
+        /// <param name="this_"></param>
+        /// <returns></returns>
+        public static string GetHash(this byte[] this_)
+        {
+            string hash;
+            using (SHA1CryptoServiceProvider sha1 = new SHA1CryptoServiceProvider())
+            {
+                hash = Convert.ToBase64String(sha1.ComputeHash(this_));
+            }
+            return hash;
         }
     }
 }

@@ -61,5 +61,25 @@ namespace GSharp.Extensions.ObjectEx {
             Type thisType = _this_.GetType();
             return t.Equals(thisType) || thisType.IsSubclassOf(t) || t.IsAssignableFrom(thisType);
         }
+
+        public static string Dump(this System.Object this_)
+        {
+            return GSharp.Data.Dump.ToDump(this_);
+        }
+
+        public static string Dump(this System.Object this_, Type type)
+        {
+            return GSharp.Data.Dump.ToDump(this_, type);
+        }
+
+        public static string Dump(this System.Object this_, GSharp.Data.DumpSettings settings)
+        {
+            return GSharp.Data.Dump.ToDump(this_, settings);
+        }
+
+        public static string Dump(this System.Object this_, Type type, string name)
+        {
+            return GSharp.Data.Dump.ToDump(this_, type, name);
+        }
     }
 }

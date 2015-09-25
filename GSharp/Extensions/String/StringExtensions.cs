@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Security.Cryptography;
@@ -167,6 +169,18 @@ namespace GSharp.Extensions.StringEx {
 
         public static string Decrypt(this string str, string password = null) {
             return GSharp.Data.Crypto.EncDec.Decrypt(str, (password != null) ? password : GSharp.Data.Crypto.EncDec.GeneratePassword());
+        }
+
+        public static Process CMD(this string this_)
+        {
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "/C " + this_;
+            process.StartInfo = startInfo;
+            process.Start();
+            return process;
         }
 
     }
